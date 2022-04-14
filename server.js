@@ -11,9 +11,9 @@ app.use(express.json());
 
 app.get('/doctor', async function (req,res) {
     
-    let { rows } = await pool.query("Select * from doctor")
+    
 
-    res.json(rows);
+    res.json({title : "doctor"});
 
 
 })
