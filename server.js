@@ -1,5 +1,5 @@
 let express = require('express');
-
+const port = process.env.PORT || 3000;
 let app = express();
 let cors = require('cors');
 let path = require('path');
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get('/doctor', async function (req,res) {
     
-    let { rows } = await pool.query("Select * from patient");
+    let { rows } = await pool.query("Select first_name_patient from patient");
 
     res.json(rows);
 
@@ -23,7 +23,7 @@ app.get('/doctor', async function (req,res) {
 //     // res.json(["Sol7"]);
 // })
 
-const port = process.env.PORT || 3000;
+
 app.listen(port, function () {
     console.log("Server is running!");
 })
