@@ -11,11 +11,7 @@ app.use(express.json());
 
 app.get('/doctor', async function (req,res) {
     
-    let client = await pool.connect();
-    let result = await client.query("Select * from doctor");
-    let results = result.rows
-    res.json(results);
-    client.release();
+    res.json({title : "doctor"})
 
 })
 // app.get('/page', function (req,res) {
