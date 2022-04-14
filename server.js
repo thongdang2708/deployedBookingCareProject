@@ -4,7 +4,7 @@ let app = express();
 
 let path = require('path');
 
-let pathView = path.join(__dirname,'../public');
+let pathView = path.join(__dirname,'./public');
 
 app.get('/fruits', async function (req,res) {
 
@@ -16,8 +16,8 @@ app.get('/fruits', async function (req,res) {
 })
 
 app.get('/page', function (req,res) {
-    // res.sendFile(pathView + '/testHTML.html');
-    res.json(["Sol7"]);
+    res.sendFile(pathView + '/testHTML.html');
+    // res.json(["Sol7"]);
 })
 
 const port = process.env.PORT || 3000;
