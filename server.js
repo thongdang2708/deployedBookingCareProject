@@ -14,7 +14,8 @@ app.get('/fruits', async function (req,res) {
     
     // let { rows } = await pool.query("Select * from patient");
 
-    res.status(200).json({title : "Thong Dang"});
+    let { rows } = await pool.query("Select * from doctor");
+    res.json(rows);
 })
 
 app.get('/page', function (req,res) {
