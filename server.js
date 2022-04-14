@@ -5,7 +5,7 @@ let app = express();
 let path = require('path');
 
 let pathView = path.join(__dirname,'./public');
-
+app.use(cors());
 app.get('/fruits', async function (req,res) {
 
     res.status(200).json({first_name_patient : 'Thong Dang'})
