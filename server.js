@@ -18,7 +18,7 @@ app.get('/page', function (req,res) {
     res.json(["Sol7"]);
 })
 
-const port = process.env || 3000git ;
+const port = process.env || 3000;
 app.listen(port, function () {
     console.log("Server is running!");
 })
