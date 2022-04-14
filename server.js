@@ -28,10 +28,12 @@ app.get('/doctor', async function (req,res) {
     res.status(200).json(rows);
 
 })
-// app.get('/page', function (req,res) {
-//     res.sendFile(pathView + '/testHTML.html');
-//     // res.json(["Sol7"]);
-// })
+
+
+app.get('/page', function (req,res) {
+    res.sendFile(pathView + '/testHTML.html');
+    // res.json(["Sol7"]);
+})
 
 
 app.listen(Port, function () {
