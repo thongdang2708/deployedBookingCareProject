@@ -4,7 +4,7 @@ let app = express();
 let cors = require('cors');
 let path = require('path');
 
-let pool = require('./database')
+let pool = require('./database.js')
 
 let pathView = path.join(__dirname,'./public');
 app.use(cors());
@@ -15,7 +15,7 @@ app.get('/doctor', async function (req,res) {
     
     let { rows } = await pool.query("Select first_name_patient from patient");
 
-    res.send(rows);
+    res.json(rows);
 
 })
 // app.get('/page', function (req,res) {
