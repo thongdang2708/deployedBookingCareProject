@@ -20,7 +20,7 @@ app.get('/page', function (req,res) {
     res.json(["Sol7"]);
 })
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log("Server is running!");
 })
