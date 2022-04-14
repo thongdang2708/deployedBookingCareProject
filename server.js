@@ -1,7 +1,7 @@
 let express = require('express');
 // const pool = require('../testHeroku/database');
 let app = express();
-
+let cors = require('cors');
 let path = require('path');
 
 let pathView = path.join(__dirname,'./public');
