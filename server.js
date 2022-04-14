@@ -9,12 +9,13 @@ app.use(cors());
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
-app.get('/doctor', function (req,res) {
+app.get('/doctor', async function (req,res) {
     
-    let { rows } = pool.query("Select * from doctor");
-
-    res.json(rows);
-
+    let client = await pool.connect();
+    let result = await client.query("Select * from doctor");
+    let results = result.rows
+    res.json(results);
+    client.release();
 
 })
 // app.get('/page', function (req,res) {
