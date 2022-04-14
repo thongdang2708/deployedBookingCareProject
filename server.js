@@ -23,9 +23,9 @@ app.use(express.json());
 
 app.get('/doctor', async function (req,res) {
     
-    let { rows } = await pool.query("Select first_name_patient from patient");
+    let { rows } = await pool.query('Select first_name_patient from patient');
 
-    res.json(rows);
+    res.status(200).json(rows);
 
 })
 // app.get('/page', function (req,res) {
