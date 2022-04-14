@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <h1 class="title"> </h1>
+
+    <script>
+
+        let title = document.querySelector('.title');
+
+        fetchDom();
+
+        function fetchDom () {
+
+            let res = await fetch('http://localhost:3000/fruits');
+
+            let data = await res.json();
+
+            let zeroData = data[0];
+
+            title.innerText = zeroData.first_name_patient;
+
+        }
+
+
+    </script>
+</body>
+</html>
