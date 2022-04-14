@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
-app.get('/doctor', async function (req,res) {
+app.get('/doctor', function (req,res) {
     
-    
+    let { rows } = pool.query("Select * from doctor");
 
-    res.json({title : "doctor"});
+    res.json(rows);
 
 
 })
@@ -22,7 +22,7 @@ app.get('/page', function (req,res) {
     // res.json(["Sol7"]);
 })
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, function () {
     console.log("Server is running!");
 })
