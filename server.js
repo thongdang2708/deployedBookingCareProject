@@ -6,11 +6,13 @@ let path = require('path');
 let pool = require('./database')
 let pathView = path.join(__dirname,'./public');
 app.use(cors());
+app.use(express.urlencoded({extended : true}));
+app.use(express.json());
 app.get('/fruits', async function (req,res) {
 
     // res.status(200).json([{first_name_patient : 'Thong Dang'}])
     
-    let {rows} = await pool.query("Select * from patient");
+    let { rows } = await pool.query("Select * from patient");
 
     res.status(200).json(rows);
 })
