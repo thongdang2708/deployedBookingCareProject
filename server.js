@@ -12,9 +12,9 @@ app.get('/fruits', async function (req,res) {
 
     // res.status(200).json([{first_name_patient : 'Thong Dang'}])
     
-    let { rows } = await pool.query("Select * from patient");
+    // let { rows } = await pool.query("Select * from patient");
 
-    res.status(200).json(rows);
+    res.status(200).json({title : "Thong Dang"});
 })
 
 app.get('/page', function (req,res) {
