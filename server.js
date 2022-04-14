@@ -1,10 +1,20 @@
 let express = require('express');
-const port = process.env.PORT || 5000;
+const Port = process.env.PORT || 3000;
 let app = express();
 let cors = require('cors');
 let path = require('path');
 
-let pool = require('./database.js')
+const Pool = require('pg').Pool;
+
+const pool = new Pool({
+    user : "postgres",
+    host : "localhost",
+    database : "postgres",
+    password : "1998",
+    port : 5432
+})
+
+
 
 let pathView = path.join(__dirname,'./public');
 app.use(cors());
@@ -24,6 +34,6 @@ app.get('/doctor', async function (req,res) {
 // })
 
 
-app.listen(port, function () {
+app.listen(Port, function () {
     console.log("Server is running!");
 })
