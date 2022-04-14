@@ -15,7 +15,7 @@ app.get('/doctor', async function (req,res) {
     
     let { rows } = await pool.query("Select first_name_patient from patient");
 
-    res.json(rows);
+    res.send(rows);
 
 })
 // app.get('/page', function (req,res) {
