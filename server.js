@@ -17,10 +17,10 @@ app.get('/doctor', function (req,res) {
 
 
 })
-app.get('/page', function (req,res) {
-    res.sendFile(pathView + '/testHTML.html');
-    // res.json(["Sol7"]);
-})
+// app.get('/page', function (req,res) {
+//     res.sendFile(pathView + '/testHTML.html');
+//     // res.json(["Sol7"]);
+// })
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
