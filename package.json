@@ -12,5 +12,6 @@
   "dependencies": {
     "express": "^4.17.3",
     "pg": "^8.7.3"
-  }
+  },
+  "server": "json-server --watch db.json --port 3g000 --no-cors"
 }
