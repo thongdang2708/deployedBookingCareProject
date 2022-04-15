@@ -1,7 +1,15 @@
 let express = require('express');
 let app = express ();
 let pool = require('./database');
+const pathView = path.join(__dirname,'../public');
+let bcrypt = require('bcryptjs');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+app.use(cookieParser());
+app.use(cors());
 
+app.use(express.static(pathFile))
+app.set('view engine','hbs');
 
 
 let port = process.env.PORT || 3000;
@@ -41,9 +49,6 @@ app.get('/allresult', async function (req,res) {
     }
     client.release();
 });
-
-
-
 
 app.get('/hospital', async function (req,res) {
     let client = await pool.connect();
@@ -90,7 +95,6 @@ app.get('/onlydoctor/:id', async function (req,res) {
 })
 
 
-
 app.get('/hospital/:id', async function (req,res) {
     let client = await pool.connect();
     let id = Number(req.params.id);
@@ -135,6 +139,10 @@ app.get('/patient/:id', async function (req,res) {
     }
 
     client.release();
+})
+
+app.get('/mainpage', function (req,res) {
+    res.sendFile(pathView + '/mainpage.html');
 })
 
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/login.css">
+    <title> Login </title>
+</head>
+<body>
+    <div class="container">
+    <form action="/login" method="post" id="form" class="form">
+        <h2> Log In </h2>
+        <div class="username-part common">
+            <label for="username" class="label"> Username: </label> <br>
+            <input type="text" name="username" id="username" class="frame" placeholder="Username...!" required>
+        </div>
+    
+        <div class="password-part common">
+            <label for="password" class="label"> Password: </label> <br>
+            <input type="password" name="password" id="password" class='frame' placeholder="Password...!" required>
+
+        <button id="eye-contact" class="eye-contact">
+        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye-slash"></i>
+        </button>
+        </div> 
+
+    <button type="submit" id="submit" class="submit"> Log In </button>
+
+    <p class="script"> Don't have an account? Please <a href="/register" class="link-to-login"> register! </a></p>
+    </form>
+
+
+    <div class="notification">
+       
+
+    </div>
+    </div>
+
+    <script src="./js/login.js"></script>
+
+   
+</body>
+</html>

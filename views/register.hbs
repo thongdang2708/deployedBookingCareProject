@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/register.css">
+    
+    <title> Register </title>
+</head>
+
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    padding: 13px 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    border: 1px black solid;
+    width: 20rem;
+}
+
+.common {
+    margin-bottom: 20px;
+}
+
+.form h2 {
+    text-align: center;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.frame {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px black solid;
+}
+
+.frame:focus {
+    outline: none;
+    outline-color:aliceblue; 
+}
+
+.script {
+    text-align: center;
+}
+
+.link-to-login {
+    text-decoration: none;
+    color: #45c3d2;
+}
+
+.submit {
+    padding: 13px 20px;
+    width: 100%;
+    display: inline-block;
+    background-color: #fff;
+    border: 1px black solid;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.submit:active {
+    transform: scale(0.98);
+}
+
+.eye-contact {
+    position: absolute;
+    transform: translateX(-99.5%);
+    height: 39px;
+    cursor: pointer;
+    width: 2.5rem;
+}
+
+.eye-contact-confirm {
+    position: absolute;
+    transform: translateX(-99.5%);
+    height: 39px;
+    cursor: pointer;
+    width: 2.5rem;
+}
+
+.fa-eye-slash {
+    display: none;
+}
+
+.eye-contact.active .fa-eye-slash {
+    display: block;
+}
+
+.eye-contact.active .fa-eye {
+    display: none;
+}
+
+.eye-contact-confirm.active .fa-eye-slash {
+    display: block
+}
+
+.eye-contact-confirm.active .fa-eye {
+    display: none;
+}
+
+.paragraph {
+    background-color: 10px #eee solid;
+    padding: 15px 25px;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px black solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.error {
+    background-color: #45c3d2;
+    padding: 15px 25px;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px black solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5vh;
+    background-color: #45c3d2;
+    padding: 20px 25px;
+    font-size: 20px;
+    box-shadow: 1px 2px 4px rgb(0 0 0 / 50%);
+    display:flex;
+    border: 1px black solid;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25vh;
+    justify-content: space-between;
+}
+.fa-arrow-circle-left{
+    color: black
+}
+
+
+    </style>
+<body>
+
+     <header id="header" class="header">
+        <div class="title">
+            <i id='quaylai' type="button" class="fa fa-arrow-circle-left" dl-cuaso="chuyenkhoa" aria-label="Đóng" onclick="location.href='/mainpage'">
+            </i>
+            to Main Page
+        </div>
+    </header> 
+
+    <div class="container">
+    <form action='/post/register' method="POST" id="form" class="form">
+    <h2> Register </h2>
+    <div class="username-part common">
+        <label for="username" class="label"> Username: </label> <br>
+        <input type="text" name="username" id="username" placeholder="Username...!" class='frame'required>
+    </div>
+
+    <div class="firstname common">
+        <label for="firstname" class="label"> First Name: </label> <br>
+        <input type="text" name="firstname" id="firstname" placeholder="First Name...!" class='frame'required>
+    </div>
+
+    <div class="lastname common">
+        <label for="lastname" class="label"> Last Name: </label> <br>
+        <input type="text" name="lastname" id="lastname" placeholder="Last Name...!" class='frame'required>
+    </div>
+
+     <div class="location common">
+        <label for="location" class="label"> Location: </label> <br>
+        <input type="text" name="location" id="location" placeholder="Location...!" class='frame'required>
+    </div>
+
+     <div class="phone common">
+        <label for="phone" class="label"> Phone: </label> <br>
+        <input type="text" name="phone" id="phone" placeholder="Phone number...!" class='frame'required>
+    </div>
+
+    <div class="email common">
+        <label for="email" class="label"> Email: </label> <br>
+        <input type="email" name="email" id="email" placeholder="Email...!" class='frame'required>
+    </div>
+
+    <div class="password-part common">
+        <label for="password" class="label"> Password: </label> <br>
+        <input type="password" name="password" id="password" class='frame' placeholder="Password...!" required>
+
+        <button id="eye-contact" class="eye-contact">
+        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye-slash"></i>
+        </button>
+    </div> 
+
+    <div class="password-repeat-part common">
+        <label for="password-repeat" class="label"> Confirmed Password: </label> <br>
+        <input type="password" name="password_repeat" id="password-repeat" class='frame' placeholder="Confirm your password...!" required>
+         <button id="eye-contact-confirm" class="eye-contact-confirm">
+        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye-slash"></i>
+        </button>
+    </div>
+
+   <button type="submit" id="submit" class="submit"> Register </button> 
+
+   <p class="script"> Already have an account? Please <a href="/login" class="link-to-login"> log in! </a></p>
+    </form>
+
+    <div class="notification">
+        {{#if message}}
+        <p class="error">     {{message}} </p>
+        {{/if}}
+    </div>
+    </div>
+
+
+    <script src="./js/register.js"></script>
+
+    <script>
+
+        
+        
+        const notification = document.querySelector('.notification');
+        const error = document.querySelector('.error');
+        let password = document.getElementById('password');
+        let password_repeat = document.getElementById('password-repeat');
+        let submit = document.getElementById('submit');
+        const form = document.getElementById('form');
+        let username = document.getElementById('username');
+        let email = document.getElementById('email');
+        let first_name = document.getElementById('firstname');
+        let last_name = document.getElementById('lastname');
+        let city = document.getElementById('location');
+        let phone = document.getElementById('phone');
+
+       
+
+
+        form.addEventListener('submit', async (ed) => {
+
+            setTimeout(() => {
+               error.remove();
+            },0);
+
+              let res = await fetch('http://localhost:3000/api/getuser');
+
+                let data = await res.json();
+
+
+
+
+            ed.preventDefault();
+            
+            let passwordCheck = password.value.length < 6 ? '' : password.value;
+            
+            
+            let passwordRepeat = password_repeat.value === password.value ? password_repeat.value : '';
+
+
+
+            if (password.value.length < 6) {
+                displayDom('Fill Again. Password is too short!')
+            } else if (password.value !== password_repeat.value) {
+                displayDom('Confirmed password is not the same!')
+            } else if (data.some(info => info.username == username.value.trim()) ) {
+                displayUser('This user already existed!')
+            } else if (data.some(info => info.email == email.value.trim())) {
+                displayUser('This email already existed')
+            }
+
+    
+
+        })
+
+        function displayUser(msg) {
+               let p = document.createElement('p');
+                p.classList.add('paragraph');
+                p.innerText = msg;
+                p.style.backgroundColor = '#45c3d2';
+                notification.appendChild(p);
+                username.value = '';
+                password.value = '';
+                password_repeat.value = '';
+                first_name.value = '';
+                last_name.value = '';
+                city.value = '';
+                phone.value = '';
+                email.value = '';
+                setTimeout(() => {
+                      p.innerText = '';
+                      p.remove();
+                },2000)
+        }
+       
+        function displayDom (msg) {
+                 let p = document.createElement('p');
+                p.classList.add('paragraph');
+                p.style.backgroundColor = '#45c3d2';
+                p.innerText = msg;
+                notification.appendChild(p);
+                password.value = '';
+                password_repeat.value = '';
+                setTimeout(() => {
+                      p.innerText = '';
+                      p.remove();
+                },2000)
+        }
+
+
+    </script>
+</body>
+</html>

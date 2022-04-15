@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    width: 100vw;
+    overflow-y: auto;
+}
+.search-container {
+    width: 100%;
+    height: 800px;
+    background-image: url('./rising_healthcare_costs_2019_banner.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.search-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.search-container * {
+    z-index: 10;
+}
+.search-container h1 {
+    color: #fff;
+    margin-bottom: 100px;
+    font-size: 80px;
+}
+.search-container .search {
+    width: 600px;
+    
+    height: 80px;
+    position: relative;
+}
+.search-container .search button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #666;
+}
+.search-container .search button:active {
+    transform: scale(1.1) translateY(-50%);
+}
+.search-container .search input {
+    width: 100%;
+    height: 100%;
+    background:  #F8ED3B;
+    border-radius: 40px;
+    padding-left: 100px;
+    font-size: 30px;
+    color: #111;
+    border: none;
+}
+.search-container .search input:focus {
+    outline: none;
+}
+
+.swiper {
+   width: 1800px;
+   height: 500px;
+   /* background:  #A2AAAE; */
+   margin: auto;
+   
+  
+  }
+.swiper-wrapper{
+      width: 100%;
+      height: 90%;
+
+}
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    
+    width: 20%;
+    height: 100%;
+    
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    cursor: pointer;
+    
+}
+
+.swiper-slide  img {
+    border-radius: 10px;
+    width: 80%;
+    height: 60%;
+    object-fit: cover;
+}
+.swiper-slide  p {
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.swiper-slide:hover p {
+    transform: scale(1.1);
+    color:  #29A3EB;
+}
+.swiper-container {
+    width: 100vw;
+    height: 600px;
+   
+    margin: 0;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   position: relative;
+}
+.swiper-container.grey-color {
+    background: #f9f9f9;
+}
+.swiper-container.white-color {
+    background: #fff;
+}
+.swiper-container h1 {
+    position: absolute;
+    top: 30px;
+    left: 14%;
+    font-size: 40px;
+    border-bottom: 3px solid  #232525;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: rows;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    height: 200px;
+    background:  #D2D7D9;
+    color: #111;
+}
+footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    list-style-type: none;
+}
+footer ul li {
+margin-bottom: 20px;
+font-size: 25px;
+}
+footer ul li a {
+    text-decoration: none;
+    color: #111;
+}
+footer .locations {
+    display: flex;
+    flex-direction: column;
+
+}
+footer .location {
+    margin-bottom: 20px;    
+}
+
+.logo-image {
+    width: 10rem;
+}
+
+.header {
+    width: 120rem;
+    /* overflow-x: hidden; */
+    padding: 13px 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.left-side {
+    display: flex;
+    width: 15rem;
+    z-index: 1;
+}
+
+.bookmark {
+    z-index: -1;
+}
+
+.logo-image {
+    margin-left: 30px;
+}
+
+.bookmark {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar-element {
+    width: 12rem;
+    cursor: pointer;
+    height: 100%;
+    padding: 4px 8px;
+    border-right: 1px #eee solid;
+}
+
+.nav-bar-element:hover {
+    background-color: rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* .nav-bar-element:first-child {
+    border-left: 1px #eee solid;
+} */
+
+
+
+.nav-bar-element:focus {
+    outline: none;
+}
+
+.right-side {
+    display: flex;
+    height: 100%;
+    margin-top: 0;
+    z-index: 1;
+}
+
+.first-child {
+    border-left: 1px #eee solid;
+}
+
+.upper-part {
+    font-weight: bold;
+}
