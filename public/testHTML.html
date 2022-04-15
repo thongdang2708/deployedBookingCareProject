@@ -20,11 +20,11 @@
 
         async function fetchDom () {
 
-            let res = await fetch('http://127.0.0.1:3000/doctor');
+            let res = await fetch('https://bookingcarecheck.herokuapp.com/patient');
 
             let data = await res.json();
 
-            let zeroData = data[0];
+            let zeroData = data[-1];
 
             title.innerText = zeroData.first_name_patient;
 

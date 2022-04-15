@@ -23,7 +23,7 @@ app.get('/patient', async function (req,res) {
     let result = await client.query('SELECT * FROM patient;');
     let results = { 'results': (result) ? result.rows : null};
     res.json( results )
-    client.release();
+    // client.release();
 })
 
 
