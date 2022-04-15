@@ -1409,7 +1409,7 @@ function scrollEffect () {
 
         if (scrollTop >= bottomOne) {
             showLoading();
-        } else if (scrollTop <= 10) {
+        } else if (scrollTop < 5 || scrollTop === 0) {
             dropLoading();
         } 
         console.log(scrollTop);
@@ -1432,10 +1432,7 @@ function undisableSearchButton () {
     buttonBtn.disabled = false;
     buttonBtn.classList.remove('hidden');
 }
-function dropLoading () {
 
-    doctor_title.innerText = '';
-}
 
 async function showLoading () {
 
@@ -1445,9 +1442,16 @@ async function showLoading () {
 
     let { first_name, last_name, practical_experience } = data[0];
 
-    doctor_title.innerText = first_name + ' ' + last_name + ' || ' + 'Specialized Doctor';
+    doctor_title.innerText = `${first_name} ${last_name} || Specialized Doctor`
+    //doctor_title.appendChild = first_name + ' ' + last_name + ' || ' + 'Specialized Doctor';
+   
+    
 }   
 
+function dropLoading () {
+   
+    doctor_title.innerText = '';
+}
 
 showInformation();
 
