@@ -162,7 +162,7 @@ app.get('/post/register', function (req,res) {
     res.render('register')
 })
 
-app.get('/feedback/:id', async function (req,res) {
+app.get('/api/feedback/:id', async function (req,res) {
 
     let id = Number(req.params.id);
 
