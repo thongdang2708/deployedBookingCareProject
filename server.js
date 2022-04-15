@@ -3,13 +3,14 @@ let app = express ();
 let pool = require('./database');
 let path = require('path');
 let cors = require('cors');
-const pathView = path.join(__dirname,'../public');
+const pathView = path.join(__dirname,'../testHeroku2/public');
 let bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 app.use(cors());
 
+console.log(pathView);
 app.use(express.static(pathView))
 app.set('view engine','hbs');
 
