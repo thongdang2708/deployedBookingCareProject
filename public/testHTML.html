@@ -28,7 +28,14 @@
 
             // let patient = data[-1];
 
-            console.log(data);
+            data.forEach(info => {
+                let span = document.createElement('span');
+                span.classList.add('minor');
+                span.innerHTML = `
+                    ${info.patient_name}
+                `
+                title.appendChild(span);
+            })
 
         }
 
