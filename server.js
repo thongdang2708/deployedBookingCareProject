@@ -19,12 +19,14 @@ app.get('/patient', async function (req,res) {
 
     // res.status(200).json(rows);
 
-    let client = await pool.connect();
-    let result = await client.query('SELECT * FROM patient;');
+    // let client = await pool.connect();
+    let result = await pool.query('SELECT * FROM patient;');
     let results = result.rows;
     res.json( results )
     // client.release();
 })
+
+
 
 
 app.get('/page', function (req,res) {
