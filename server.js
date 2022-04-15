@@ -318,8 +318,8 @@ app.get('/contactforcoop', function (req, res) {
 })
 
 app.get('/form', function (req,res) {
-    res.sendFile(pathView + '/bookingdoctor.html');
-
+    // res.sendFile(pathView + '/bookingdoctor.html');
+    res.render('bookingdoctor');
     
 })
 
