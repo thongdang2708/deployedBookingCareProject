@@ -267,7 +267,7 @@ app.post('/login', async function (req,res) {
                     const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{expiresIn: "7d"});
                    
                     // await pool.query('Update account set last_login = now() where username = $1',[rows[0].username]);
-                    res.cookie('token',token,{...(process.env.COOKIE_DOMAIN && {domain: process.env.COOKIE_DOMAIN}) , httpOnly: true,sameSite: 'none', secure: true});
+                    res.cookie('token',token);
                     return res.redirect('/loggedin');
                 } else {
                     return res.status(200).send('Not allowed!');
@@ -285,7 +285,7 @@ app.post('/login', async function (req,res) {
         client.release();
 
 })
-
+// {...(process.env.COOKIE_DOMAIN && {domain: process.env.COOKIE_DOMAIN}) , httpOnly: true,sameSite: 'none', secure: true}
 app.get('/searchdoctor', function (req,res) {
     // res.sendFile(pathView + '/searchDoctor.html')
     res.render('searchDoctor')
