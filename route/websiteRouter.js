@@ -7,7 +7,7 @@ let pathView = path.join(__dirname,'../public')
 let bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
+
 app.use(cookieParser());
 require('dotenv').config();
 
