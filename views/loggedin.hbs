@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+    <style>
+
+
+    * {
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f9f9f9;
+}
+
+.history-container {
+    
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+
+}
+.history-container h1 {
+    font-size: 60px;
+    margin: 50px auto;
+    color: #45c3d2;
+}
+.history-container ul {
+    list-style: none;
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.history-container ul li {
+    display: flex;
+    justify-content: space-evenly;
+    color: #444;
+    margin-bottom: 50px;
+    border-bottom: 3px #E6E6E9 solid;
+    padding-bottom: 20px;
+}
+.history-container ul li:nth-child(1) {
+    font-weight: bolder;
+    font-size: 35px;
+}
+
+.history-container ul li span {
+    margin-right: 100px;
+}
+.history-container ul li span:nth-child(6) {
+    margin-right: 0px;
+}
+.patient-infor {
+    position: absolute;
+    top: -50px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 3px #E6E6E9 solid;
+    padding: 25px;
+    box-shadow: 3px 6px 6px rgba(red, green, blue, alpha);
+}
+.patient-infor h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.patient-infor p, .patient-infor span {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+a {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    border: none;
+    padding: 15px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 25px;
+    background: #45c3d2;
+    text-decoration: none;
+}
+a:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+    </style>
+
+
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+<div class="history-container">
+
+        <a href="/bookingforpatient/?{{id}}">Make new reservation</a>
+        
+        <div class="patient-infor" idNumber={{id}}>
+            <h2 class="name"> </h2>
+            <p class="email"> </p>
+            <span class="phone_number"> </span>
+            
+        </div>
+        <H1>Resevation History</H1>
+        <ul class="list">
+            <li class="title">
+                <span>Reservation number</span>
+                <span>Date</span>
+                <span>Time</span>
+                <span>Duration</span>
+                <span>Doctor</span>
+                <span>Description</span>
+            </li>
+
+            {{!-- 
+            <li class="reservation-infor">
+                <span>Reservation number</span>
+                <span>Date</span>
+                <span>Time</span>
+                <span>Duration</span>
+                <span>Doctor</span>
+            </li>
+            <li class="reservation-infor">
+                <span>Reservation number</span>
+                <span>Date</span>
+                <span>Time</span>
+                <span>Duration</span>
+                <span>Doctor</span>
+            </li>
+            <li class="reservation-infor">
+                <span>Reservation number</span>
+                <span>Date</span>
+                <span>Time</span>
+                <span>Duration</span>
+                <span>Doctor</span>
+            </li> --}}
+        </ul>
+    </div>
+
+
+
+
+    <script>
+        let id_number = Number(document.querySelector('.patient-infor').getAttribute('idNumber'));
+
+        fetchPatient();
+        console.log(id_number);
+        async function fetchPatient () {
+
+            let res = await fetch(`http://localhost:3000/api/patient/${id_number}`);
+
+            let data = await res.json();
+
+            data.forEach(info => {
+
+                let li = document.createElement('li');
+                li.classList.add('reservation-infor');
+                li.innerHTML = `
+                <span> ${info.reservation_id}</span>
+                <span> ${info.date} : ${info.month} : ${info.year} </span>
+                <span> ${info.start_time} : ${info.end_time} </span>
+                <span> 15 minutes </span>
+                <span> ${info.first_name} ${info.last_name} </span>
+                <span>     ${info.description}                     </span>
+                
+                `
+                document.querySelector('.list').appendChild(li);
+                document.querySelector('.name').innerText = info.first_name_patient + ' ' + info.last_name_patient;
+                document.querySelector('.email').innerText = info.email;
+                document.querySelector('.phone_number').innerText = info.phone_number;
+            })
+
+
+
+        }
+
+
+
+
+
+
+        //http://localhost:3000/api/patient/2
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="./doctor.css">
+    <link rel="stylesheet" href="./doctorBooking.css">
+    <title> Doctors </title>
+</head>
+
+    <style>
+
+
+
+
+
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+    width: 80vh;
+    font-family: Arial, Helvetica, sans-serif;
+    /* overflow-x: hidden; */
+    /* overflow-x: hidden; */
+}
+
+.header {
+    margin: 0;
+    background-color: #45c3d2;
+    width: 240%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.icon-header {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.navigation-bar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 1;
+    top: 0;
+}
+
+.navigation-bar.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.navigation-container {
+    position: fixed;
+    background-color: white;
+    margin: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30vh;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+
+.navigation-container.active {
+    transform: translateX(0);
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li {
+    padding: 13px 20px;
+    border-bottom: 1px #eee solid;
+    font-size: 18px;
+}
+
+.menu-element.third {
+    border: 0;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: #45c3d2;
+}
+.social-media-icon {
+    height: 3vh;
+}
+
+.menu-element.brown {
+    background-color:  #f9f9f9;
+    color: black;
+    font-weight: normal;
+    border: 0;
+}
+
+
+
+.social-media {
+    padding: 13px 20px;
+}
+
+.doctor-role {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40rem;
+
+}
+
+.doctor-title {
+    margin-left: 2px;
+    color: white;
+    width: 23rem;
+    text-align: center;
+    margin-top: 3px;
+    font-weight: bold;
+    /* border: 2px black solid; */
+}
+
+.doctor-booking-info {
+    margin: 0 auto;
+    height: 100vh;
+    max-width: 50%;
+    /* border: 1px black solid; */
+    
+}
+
+.frame-for-booking-info {
+    margin: 0 auto;
+    height: 130vh;
+    width: 240%;
+    /* border-bottom: 1px black solid; */
+
+}
+
+.doctor-bookmark {
+    color: #45c3d2;
+    font-size: 12px;
+    padding: 13px 20px;
+}
+
+.doctor-image-and-description {
+    padding: 13px 20px;
+}
+
+.doctor-image {
+    border-radius: 50%;
+    height: 120px;
+}
+
+.doctor-image-and-description {
+    display: flex;
+    align-items: center;
+}
+
+.doctor-description {
+    margin-left: 20px;
+}
+
+.booking-container {
+    border-right: 1px grey solid;
+    width: 100vh;
+    max-width: 100%;
+    padding: 13px 20px;
+}
+
+.booking-container strong {
+    padding: 13px 20px;
+    font-size: 15px;
+}
+
+.booking-box-and-detail-for-booking {
+    display: flex;
+    max-width: 100%;
+}
+
+.booking-detail-element {
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.frame-for-booking-info {
+    display: flex;
+}
+
+.booking-detail {
+    list-style: none;
+    width: 50vh;
+}
+
+.booking-detail li {
+    padding: 10px 20px;
+
+}
+
+.booking-detail li:not(:last-of-type) {
+    border-bottom: 1px grey solid;
+}
+
+
+.click-for-detail-price {
+    color: #45c3d2;
+    cursor: pointer;
+}
+
+.practical-experience-list li {
+    margin-bottom: 10px;
+}
+.click-for-insurance-price {
+    color: #45c3d2;
+    cursor: pointer;
+}
+
+.training-experience-list li {
+    margin-bottom: 10px;
+}
+
+.box-detail-two {
+    border: 1px black solid;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.state-insurance-info {
+    border-bottom: 1px black solid;
+    padding: 13px 20px;
+    background-color: #eee;
+}
+
+.private-insurance-info {
+    border-bottom: 1px black solid;
+    padding: 13px 20px;
+    background-color: burlywood;
+}
+
+.insurance-name {
+    font-weight: bold;
+}
+
+.script-for-info-detail {
+    font-weight: bold;
+}
+
+.hide-price-list {
+    font-weight: bold;
+    color:#45c3d2;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.doctor-description-box {
+    margin: 0 auto;
+    border-bottom: 1px black solid;
+    background-color: #eee;
+    z-index: -1;
+    border: 1px black solid;
+    margin-right: 0;
+    width: 192vh;
+    overflow-x: hidden;
+}
+
+.doctor-name-and-title {
+    transform: translateX(18%);
+    padding: 13px 20px;
+}
+
+.training-experience {
+    transform: translateX(18%);
+    padding: 13px 20px;
+   
+}
+
+.training-title {
+    margin-bottom: 13px;
+}
+
+.practical-experience {
+    transform: translateX(18%);
+    padding: 13px 20px;
+}
+
+.experience-title {
+    margin-bottom: 13px;
+   
+}
+
+.feedback-comment {
+    border-bottom: 1px black solid;
+    width: 100%;
+    z-index: -1;
+    background-color: #eee;
+    padding: 13px 20px;
+    width: 192vh;
+    overflow-x: hidden;
+}
+
+.feedback-title {
+    transform: translateX(18%);
+    padding: 13px 20px;
+}
+
+.feedback-list {
+    transform: translateX(18%);
+    list-style: none;
+    padding: 0;
+}
+
+.feedback-list li {
+    padding: 5px 10px;
+    border-top: 1px white solid;
+    width: 80rem;
+    padding: 13px 20px;
+}
+
+.feedback-name {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.place-to-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.show-role {
+    width: 40%;
+    background-color: white;
+    border: 1px rgba(0, 0, 0, 0.4) solid;
+    cursor: pointer;
+    padding: 13px 20px;
+    color: #45c3d2;
+    margin-top: 50px;
+    border-radius: 10px;
+
+}
+
+.show-role:focus {
+    outline: none;
+}
+
+.show-role:active {
+    transform: scale(0.98);
+}
+
+.feedback-name {
+    margin-bottom: 10px;
+}
+
+.advertisement {
+    transform: translateX(18%);
+    padding: 13px 20px;
+    display: none;
+}
+
+.ad-header-part {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.stage-process {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+
+.fa-arrow-up {
+    display: none;
+}
+
+.advertise-cover.active .fa-arrow-up{
+    display: inline-block;
+}
+
+.advertise-cover.active .fa-arrow-down {
+    display: none;
+}
+
+.advertise-cover.active .advertisement {
+    display: block;
+}
+
+.ending-footer {
+    width: 192vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-around;
+    background-color:#45c3d2;
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+
+
+/* .form-control {
+    position: relative;
+} */
+
+.place-input {
+    /* width: 30vh; */
+    line-height: 20px;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: inherit;
+    width: 20rem;
+    margin: 0;
+    background-color: white;
+}
+
+.place-input:focus {
+    outline : none;
+}
+.btn {
+    position: absolute;
+    transform: translateX(-100%);
+    width: 5vh;
+    line-height: 38px;
+    border: 2px black solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.placeholder {
+    list-style: none;
+    padding: 0;
+    /* width: 30vh;
+    
+    height: 15vh; */
+    width: 20rem;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: none;
+    border-radius: 5px;
+    max-height: 100%;
+    border: 2px rgba(0,0,0,0.4) solid;
+}
+
+.placeholder li {
+    position: relative;
+    padding: 15px 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.date {
+    margin-left: 50px;
+    width: 250px;
+    margin-top: 3px;
+    height: 10px;
+    text-align: left;
+}
+
+
+
+.icon {
+    position: absolute;
+}
+
+.placeholder li:focus {
+    outline: none;
+}
+
+.placeholder li:not(:last-of-type) {
+    border-bottom: 1px grey solid;
+}
+.placeholder.active {
+    display: block;
+}
+
+.fa-square-xmark {
+    display: none
+}
+
+.form-control.active .fa-square-xmark {
+    display: block;
+    height: 39px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-control.active .fa-arrow-down {
+    display: none;
+}
+
+.icon {
+    max-width: 20px;
+    top: 18px;
+}
+
+
+
+.booking-date.active .icon {
+    display: none;
+}
+
+.icon.active {
+    display: none;
+}
+
+.booking-value {
+    width : 50vh;
+    height: 90vh;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    /* display: grid;
+    grid-template-columns: repeat(4,1fr); */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+    border: 1px black solid;
+    padding: 13px 20px;
+    margin-bottom: 20px;
+}
+
+/* .btn {
+    padding: 13px 20px;
+    display: inline-block;
+    width: 15%;
+    cursor: pointer;
+} */
+
+.button-click-date {
+    /* padding: 13px 20px;
+    background-color: lightblue;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    width: 200px; */
+    display: flex;
+    flex-direction: row;
+    border: 0px green solid;
+    text-decoration: none;
+    width: 20vh;
+    height: 5vh;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.button-click-date.blue {
+    padding: 13px 20px;
+    background-color: lightblue;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.button-click-date.red.animated-btn {
+    padding: 13px 20px;
+    background-color: brown;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #0000;
+    cursor: not-allowed;
+}
+
+.button-click-date.red {
+    padding: 13px 20px;
+    background-color: brown;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    cursor: not-allowed;
+    visibility: hidden;
+}
+
+.button-click-date.animated-btn .button {
+    visibility: hidden;
+    width: 20vh;
+    height: 5vh;
+}
+
+
+.animated-btn {
+    /* background-image: linear-gradient(to right, grey 0%, #f5f5f5 10%, #f5f5f5 20%, grey 40%, grey 100%);
+    background-position: 200% 100%; */
+    color:  #0000;
+    opacity: 0.7s;
+    animation: bounce 2.5s linear infinite alternate;
+}
+
+
+@keyframes bounce {
+    0% {
+        background-color: hsl(200,20%,70%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 90%);
+    }
+}
+
+.button.red {
+    background-color: lightcoral;
+    border: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.button {
+    background-color: 20px;
+    background-color: lightblue;
+    cursor: pointer;
+    border: 0;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.button:focus {
+    outline : none;
+}
+
+.icon-header {
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.icon-header span {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.script {
+    color: white;
+}
+
+
+
+    </style>
+<body>
+    
+    <header id="header" class="header">
+    <div class="doctor-role">
+        <a href="/searchdoctor" class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Search Doctor </span></a>
+        <div class="doctor-title">  </div>
+    </div>
+
+        <div class="icon-header" id="nav-bar"> <i class="fa-solid fa-bars fa-2x"></i> </div>
+    </header>
+
+    <!-- <div class="navigation-bar">
+        <div class="navigation-container">
+        <ul class="menu-list">
+           <a href="#"> <li class="menu-element"> Home Page </li> </a>    
+           <a href="#"> <li class="menu-element"> Handbook </li> </a> 
+           <a href="#"> <li class="menu-element third"> Contact For Cooperation</li> </a> 
+           <a href="#"> <li class="menu-element brown"> About BOOKINGCARE </li> </a>
+           <a href="#"> <li class="menu-element"> For patients </li> </a>
+           <a href="#"> <li class="menu-element"> For doctors </li> </a>
+           <a href="#"> <li class="menu-element"> Roles of BookingCare </li> </a> 
+           <a href="#">  <li class="menu-element"> Contact </li> </a> 
+           <a href="#"> <li class="menu-element"> Frequently Asked Questions </li> </a> 
+           <a href="#"> <li class="menu-element"> Terms Of Use </li></a>
+           <a href="#"> <li class="menu-element"> Complaint Handling Process </li></a>
+           <a href="#"> <li class="menu-element"> Operating Regulations </li></a>
+        </ul>
+
+        <div class="social-media">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/youtube-square.svg" alt="" class="social-media-icon">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/facebook-square.svg" alt="" class="social-media-icon">
+
+        </div>
+    </div>
+    </div> -->
+
+     <div class="navigation-bar">
+    </div> 
+        <div class="navigation-container">
+        <ul class="menu-list">
+           <a href="/mainpage"> <li class="menu-element"> Home Page </li> </a>    
+           <a href="/contactforcoop"> <li class="menu-element third"> Contact For Cooperation</li> </a> 
+           
+        </ul>
+
+        <div class="social-media">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/youtube-square.svg" alt="" class="social-media-icon">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/facebook-square.svg" alt="" class="social-media-icon">
+
+        </div>
+    </div>
+
+    <main id="main">
+        <div class="frame-for-booking-info">
+        <div class="doctor-booking-info">
+            <div class="doctor-bookmark">
+                <strong> <i class="fa-solid fa-house"></i> / Specialist Examination / <span class="specific-specialization"> 
+                    Mental Health </span></strong>
+            </div>
+
+            <div class="doctor-image-and-description">
+                <img src="" alt="" id="doctor-image" class="doctor-image"> 
+
+                <div class="doctor-description">
+
+                    <h1 class="doctor-name">  </h1>
+
+                    <p class="doctor-background"> Former Head of Clinical Department, Psychiatric Disease Ho Chi Minh City
+                        Graduated from Psychotherapy, School of Practical Psychology of Paris (Psychology practique de Paris)
+                        Doctors who are 16 years old or older </p>
+
+
+
+                </div>
+
+
+            </div>
+
+
+           
+
+            
+            <div class="booking-box-and-detail-for-booking">
+
+
+                <div class="booking-container">
+                    <div class="date-input">
+                    <div id="form-control" class="form-control">
+                        <input type="text" id="place-input" class='place-input animated-btn' class="place-input" readonly>
+                        <button id="button" class="btn animated-btn">
+                            <i class="fa-solid fa-arrow-down"></i>
+                            <i class="fa-solid fa-square-xmark"></i>
+                        </button>
+                
+                    </div>
+                
+                    <ul class="placeholder" id="placeholder">
+                
+                
+                    </ul>
+                        
+                    </div>
+                
+                    <div class="booking-value">
+                
+                
+                
+                      
+                
+                
+                
+                    </div>
+                    </div>
+
+                <div class="detail-for-booking">
+                    <ul class="booking-detail">
+                        <li class="booking-detail-element"> 
+                            <span> ADDRESS OF EXAMINATION </span> <br> <br>
+                            <span class="hospital-name"> Clinic of University Hospital of Medicine and Pharmacy 1 </span> <br> <br>
+                            <span class="hospital-address"> 20-22 Duong Quang Trung, Ward 12, District 10, City. Ho Chi Minh City </span>
+                        </li>
+
+
+                        <li class="booking-detail-element">
+                            <p class="script-for-info-detail">  TYPE OF INSURANCE APPLICATION: <span class="click-for-insurance-price" id="click-for-insurance-price">  See Details </span></p>
+
+                            <div class='box-detail-two'>
+                                <div class="state-insurance-info">
+                                    <p class="insurance-name"> State health insurance: </p>
+                                    <p> Currently, there is no state health insurance for specialist examination services. </p>
+                                </div>
+
+                                <div class="private-insurance-info"> 
+                                    <p class="insurance-name"> Private health insurance: </p>
+                                    <p> For insurance units that do not guarantee directly, the clinic issues a financial invoice (red invoice) and assists the patient in completing the application</p>
+                                </div>
+
+                            </div>
+
+                        <p class="hide-price-list" id="hide-price-list"> Hide details </p>
+
+                        </li>
+
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+  
+    <div class="doctor-description-box"> 
+    <!-- <div class="doctor-description">  -->
+        <div class="doctor-name-and-title"> 
+        <h2 class="doctor-name-title"> Specialized Doctor || Tran Minh Khuyen </h2>
+        </div>
+
+        <div class="training-experience">
+            <h2 class="training-title"> Training Experience </h2>
+            
+            <ul class="training-experience-list">
+            <!-- <li class="training-experience-element"> Graduated as a General Doctor, University of Medicine and Pharmacy, Ho Chi Minh City </li>
+            <li class="training-experience-element"> Studied Level I and Level II Specializations Major in Psychiatry, Hue University of Medicine </li>
+            <li class="training-experience-element"> Graduated from Psychotherapy, School of Practical Psychology of Paris (Psychology practique de Paris) </li> -->
+            </ul>
+        </div>
+
+        <div class="practical-experience">
+            <h2 class="experience-title"> Practical Experience </h2>
+            
+            <ul class="practical-experience-list">
+            <!-- <li class="prac-experience-element"> Former Head of Professional Planning Department, Head of Psychiatric Clinic District 3, Ho Chi Minh City </li>
+            <li class="prac-experience-element"> Former Head of Clinical Department of Psychiatry in Ho Chi Minh City
+                Judicial examiners specializing in psychiatry assess serious cases, cases of legal relevance investigated by police and courts at all levels. </li> -->
+            </ul>
+        </div>
+
+    <!-- </div> -->
+
+    </div>
+
+    <div class="feedback-comment">
+        <div class="feedback-title">
+            <h2> Patient feedback after visiting </h2>
+        </div>
+
+        <ul class="feedback-list">
+            <!-- <li class="feedbacks"> 
+                <p class="feedback-name"> Truong Duc Loi </p>
+                <p class="feedback-content"> Now is good! </p>
+            </li>
+
+            <li class="feedbacks"> 
+                <p class="feedback-name"> Truong Duc Loi </p>
+                <p class="feedback-content"> Now is good! </p>
+            </li>
+
+
+            <li class="feedbacks"> 
+                <p class="feedback-name"> Truong Duc Loi </p>
+                <p class="feedback-content"> Now is good! </p>
+            </li> -->
+
+
+        </ul>
+
+        <div class="advertise-cover">
+        <div class="place-to-button">
+        <button class="show-role"> 
+            Roles of BookingCare
+            <i class="fa-solid fa-arrow-down"></i>
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+        </div>
+
+        <div class="advertisement"> 
+            <div class="advertise-script">
+                
+            <p class="ad-header-part"> Help patients choose the right doctor and book an appointment quickly. </p>
+            
+        <ul class="ad-element-list">
+            <li class="ad-element"> System of good and reputable specialist doctors </li>
+            <li class="ad-element"> The information about the doctor has been clearly and accurately verified </li>
+            <li class="ad-element"> Schedule an appointment with the correct doctor that the patient has chosen to schedule an appointment with </li>
+            <li class="ad-element"> Protecting the rights of patients when going to the doctor </li>
+            <li class="ad-element"> Free appointment. </li>
+        </ul>
+
+        <p class="ad-header-part"> Support before, during and after the examination. </p>
+        <p class="stage-process"> Before examination </p>
+
+        <ul class="ad-element-list">
+            <li class="ad-element"> Remind the appointment of the examination, advise to prepare before the examination </li>
+            <li class="ad-element"> Travel guide, check-in procedures </li>
+        </ul>
+
+        <p class="stage-process"> While examining </p>
+        
+        <ul class="ad-element-list">
+            <li class="ad-element"> Support to solve problems during examination </li>
+            <li class="ad-element">  Support patients with arising requirements </li>
+        </ul>
+
+        <p class="stage-process"> After examination </p>
+
+        <ul class="ad-element-list">
+            <li class="ad-element"> Record the patient's opinion after the examination </li>
+            <li class="ad-element">  Support to answer and clarify professional issues </li>
+            <li class="ad-element">  Protecting the rights of patients when going to the doctor </li>
+        </ul>
+
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <div class="ending-footer">
+
+    <div class="left-side">
+        <p class="copyright"> &#169; 2022 BookingCare. </p>
+    </div>
+
+    <div class="right-side">
+        <img src="https://bookingcare.vn/themes/app1912/assets/img/social/youtube-square.svg" alt="" class="social-media-icon">
+        <img src="https://bookingcare.vn/themes/app1912/assets/img/social/facebook-square.svg" alt="" class="social-media-icon">
+    </div>
+
+
+    </div>
+    
+
+
+
+      
+
+
+
+
+
+
+
+    </main>
+   
+
+    <script src="./doctor.js"></script>
+    <script src="./doctorBooking.js"></script>
+    <script src="./buttons.js"></script>
+
+
+    <script>
+
+let hide_price_list = document.getElementById('hide-price-list');
+
+let click_for_insurance_price = document.getElementById('click-for-insurance-price');
+
+let box_detail = document.querySelector('.box-detail-two');
+
+let show_role = document.querySelector('.show-role');
+
+let doctor_id = Number(location.search.slice(1));
+
+
+
+show_role.addEventListener('click', (urf) => {
+
+    urf.preventDefault();
+    show_role.parentNode.parentNode.classList.toggle('active')
+})
+
+click_for_insurance_price.addEventListener('click', (ed) => {
+    ed.preventDefault();
+
+    box_detail.classList.add('active');
+    hide_price_list.classList.add('active');
+    click_for_insurance_price.classList.add('hidden')
+})
+
+hide_price_list.addEventListener('click',(er) => {
+
+    er.preventDefault();
+
+    box_detail.classList.remove('active');
+    hide_price_list.classList.remove('active');
+    click_for_insurance_price.classList.remove('hidden')
+})
+
+let input = document.getElementById('place-input');
+let booking_list = document.querySelector('.booking-value');
+let button = document.getElementById('button');
+let placeholder = document.getElementById('placeholder');
+let form_control = document.querySelector('.form-control');
+let booking_value = document.querySelector('.booking-value');
+console.log(doctor_id);
+// Button Event Listener
+button.addEventListener('click', (et) => {
+    et.preventDefault();
+
+    button.parentNode.classList.toggle('active');
+    placeholder.classList.toggle('active');
+
+})
+
+let arrayrong = [];
+let arrayrongTwo = [];
+let arrayrongThree = [];
+//Update current dates
+fetchTime();
+
+function fetchTime () {
+
+    let newDate = new Date();
+
+    let year = newDate.getFullYear();
+    let day = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let date = newDate.toLocaleDateString('en-us', {'weekday' : 'long'});
+    newDate.setDate(newDate.getDate() + 1);
+    let nextday = newDate.getDate();
+    let nextmonth = newDate.getMonth() + 1;
+    let nextyear = newDate.getFullYear();
+    let nextDate = newDate.toLocaleDateString('en-us', {'weekday' : 'long'});
+    if (date != 'Sunday') {
+        input.value =  date + ' ' + day + '/' + month + '/' + year;
+    } else if (date == 'Sunday') {
+        input.value =  nextDate + ' ' + nextday + '/' + nextmonth + '/' + nextyear;
+    }
+
+    // input.value = date + ' ' + day + '/' + month;
+
+    for (let i=0; i<=2; i++) {
+        let newDate = new Date();
+        newDate.setDate(newDate.getDate() + i);
+        let day = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let date = newDate.toLocaleDateString('en-us', {'weekday' : 'long'});
+
+        if (date != 'Sunday') {
+       
+        let li = document.createElement('li');
+        li.classList.add('booking-date');
+        li.innerHTML = `
+        <div class='icon'>
+        <i class="fa-solid fa-square-check"></i>
+        </div>
+
+        <div class='date' date=${date} day=${day} month=${month} year=${year}>
+            <strong>  ${date} ${day}/${month}/${year}        </strong>
+        </div>
+        `
+        placeholder.appendChild(li);
+    } 
+    }
+
+    setWidthForPlaceholder();
+    clickButtonForEachDate();
+    clickToChangeDate();
+    setBookingValues();
+   
+}
+
+
+
+//Set Booking Values;
+function setBookingValues () {
+    arrayrong = [];
+    for (let i=9; i<=17;i+=0.25) {
+      
+        let integerNumbers = i.toString().split('.')[0];
+
+        let decimalNumbers = i - Math.floor(i);
+       
+        let stringNumbers = '';
+        if (decimalNumbers === 0) {
+            stringNumbers += integerNumbers + ':' + '00'
+        } else {
+            stringNumbers += integerNumbers + ':' + (decimalNumbers*60);
+        } 
+        
+    
+       arrayrong.push(stringNumbers);
+        
+    }
+    console.log(arrayrong);
+    arrayrongTwo = [];
+    for (let j=0; j<=arrayrong.length;j++) {
+        let emptyArray = arrayrong.slice(j,j+2);
+
+        arrayrongTwo.push(emptyArray);
+    }
+
+    arrayrongTwo.splice(-2,1);
+    arrayrongTwo.splice(-1,1);
+
+    
+
+    addHoursToBookingValues();
+
+}
+
+//Add hour boxes to booking-value placeholder
+
+function addHoursToBookingValues () {
+
+    console.log(input.value);
+
+    let date = Number(input.value.split(' ')[1].split('/')[0]);
+    let month = Number(input.value.split(' ')[1].split('/')[1]);
+    let year = Number(input.value.split(' ')[1].split('/')[2]);
+    let weekday = input.value.split(' ')[0];
+    console.log(weekday);
+    booking_value.innerHTML = '';
+    arrayrongTwo.forEach(data => {
+      
+        let start_time = data[0];
+
+        let end_time = data[1];
+
+        let a = document.createElement('a');
+        a.classList.add('button-click-date');
+        a.href = `/form/?${doctor_id}|${weekday}|${date}|${month}|${year}|${start_time}|${end_time}`;
+        a.setAttribute('date',date);
+        a.setAttribute('month',month);
+        a.setAttribute('start_time',start_time);
+        a.setAttribute('end_time',end_time);
+        a.setAttribute('year',year);
+
+        let button = document.createElement('button');
+        button.classList.add('button');
+        button.classList.add('animated-btn');
+        button.innerText =  `${data[0]} - ${data[1]}`;
+        a.appendChild(button);
+        //a.innerText = `${data[0]} - ${data[1]}`;
+        booking_value.appendChild(a);
+    })
+    // let res = await fetch('list.json');
+    // let data = await res.json();
+
+    // let start_times = data.map(info => info.start_time);
+    // let end_times = data.map(info => info.end_time);
+    
+    // arrayrongThree = [];
+    // start_times.forEach((start,index) => {
+    //     end_times.forEach((end,indexTwo) => {
+    //         if (index === indexTwo){
+    //             arrayrongThree.push([start,end]);
+    //         }
+    //     })
+    // })
+    
+    checkBookedHours();
+  
+}
+
+setInterval(animatedButton,7500);
+function animatedButton () {
+    let allButtons = document.querySelectorAll('.animated-btn');
+
+
+    allButtons.forEach(button => button.classList.remove('animated-btn'),
+    );
+    
+}
+
+
+
+async function checkBookedHours () {
+    let allBookingDates = document.querySelectorAll('.button-click-date');
+
+    let res = await fetch(`http://localhost:3000/api/doctor/${doctor_id}`);
+    let data = await res.json();
+    let mappedData = data.map(info => ({
+        date: info.date,
+        month:  info.month,
+        year: info.year,
+        start_time: info.start_time,
+        end_time: info.end_time
+    }))
+
+    console.log(mappedData);
+    console.log(data);
+    allBookingDates.forEach(bookingdate => {
+        
+        let year = bookingdate.getAttribute('year');
+        let date = bookingdate.getAttribute('date');
+        let month = bookingdate.getAttribute('month');
+        let start_time = bookingdate.getAttribute('start_time');
+        let end_time = bookingdate.getAttribute('end_time');
+        
+        if (mappedData.some(info => info.date.toString() == date.toString() & info.month.toString() == month.toString() & info.year.toString() == year.toString() & info.start_time.toString() == start_time.toString() & info.end_time.toString() == end_time.toString())) {
+        //    bookingdate.classList.add('red');
+                bookingdate.querySelector('.button').disabled = true;
+                bookingdate.querySelector('.button').classList.add('red');
+        } 
+
+
+    })
+    blockPost();
+
+}
+
+function blockPost () {
+    let allBlocks = document.querySelectorAll('#block-post');
+
+   allBlocks.forEach(block => {
+       block.setAttribute('disabled',true);
+       console.log(block);
+   })
+}
+
+//Set height for Placeholder Box
+
+function setWidthForPlaceholder () {
+
+   let allBookingDates = placeholder.querySelectorAll('.booking-date');
+
+    if (allBookingDates.length < 3) {
+        placeholder.style.height = '6rem';
+    } else if (allBookingDates.length >= 3){
+        placeholder.style.height = '8.7rem';
+       
+    }
+}
+
+
+//Click to change each date
+function clickButtonForEachDate() {
+
+    let allDatesInList = document.querySelectorAll('.booking-date');
+
+    allDatesInList.forEach(date => {
+        
+       let dateEl = date.querySelector('.date').innerText.trim();
+
+       if (dateEl != input.value.trim()) {
+           date.classList.add('active');
+       } 
+        
+    })
+    
+}
+
+
+//Click to change date
+function clickToChangeDate () {
+    
+    let bookingDates = document.querySelectorAll('.booking-date');
+   
+  
+
+    bookingDates.forEach(bookingdate => {
+        
+
+        bookingdate.addEventListener('click', (et) => {
+            
+            
+            bookingDates.forEach(bookingDateTwo => {
+                if (bookingDateTwo.className.includes('active') === false) {
+                    bookingDateTwo.classList.add('active');
+                }
+            })
+
+            input.value = '';
+            et.preventDefault();
+           
+
+            placeholder.classList.remove('active');
+            form_control.classList.remove('active');
+            let date = bookingdate.querySelector('.date').getAttribute('date');
+            let day = bookingdate.querySelector('.date').getAttribute('day');
+            let month = bookingdate.querySelector('.date').getAttribute('month');
+            let year = bookingdate.querySelector('.date').getAttribute('year');
+            
+            input.value = date + ' ' + day + '/' + month + '/' + year;
+            
+            if (bookingdate.querySelector('.date').innerText.trim() == input.value.trim()) {
+                bookingdate.classList.remove('active');
+            } else if (bookingdate.querySelector('.date').innerText.trim() != input.value.trim()) {
+                bookingdate.classList.add('active');
+            } 
+
+            setBookingValues();
+        })
+    })
+
+}
+
+let nav_bar = document.getElementById('nav-bar');
+let navigation_bar = document.querySelector('.navigation-bar');
+let navigation_container = document.querySelector('.navigation-container');
+let header = document.getElementById('header');
+let doctor_title = document.querySelector('.doctor-title');
+let buttonBtn = document.getElementById('button');
+let place_input = document.getElementById('place-input');
+// let doctor_id = 2;
+let doctor_name_El = document.querySelector('.doctor-name');
+let doctor_background = document.querySelector('.doctor-background');
+let training_experience_list = document.querySelector('.training-experience-list');
+let doctor_image = document.querySelector('.doctor-image');
+let practical_experience_list = document.querySelector('.practical-experience-list');
+let feedback_list = document.querySelector('.feedback-list');
+let hospital_name = document.querySelector('.hospital-name');
+let hospital_address = document.querySelector('.hospital-address');
+
+
+nav_bar.addEventListener('click', (ed) => {
+    ed.preventDefault();
+
+    navigation_bar.classList.add('active');
+    navigation_container.classList.add('active');
+    buttonBtn.disabled = true;
+    place_input.setAttribute('disabled', true);
+})
+
+
+
+
+navigation_bar.addEventListener('click', () => {
+
+    navigation_bar.classList.remove('active');
+    navigation_container.classList.remove('active');
+    buttonBtn.disabled = false;
+    place_input.setAttribute('disabled', false);
+})
+
+scrollEffect()
+
+function scrollEffect () {
+    let bottom = header.getBoundingClientRect().bottom;
+
+    let bottomOne = bottom - 10;
+    
+    let topButton = buttonBtn.getBoundingClientRect().top;
+
+    
+    
+
+
+    window.addEventListener('scroll', () => {
+
+        let {scrollTop} = document.documentElement;
+
+        if (scrollTop >= bottomOne) {
+            showLoading();
+        } else if (scrollTop <= 10) {
+            dropLoading();
+        } 
+        console.log(scrollTop);
+        if (scrollTop > topButton + 15 ) {
+            disableSearchButton();
+        } else if (scrollTop < topButton + 15) {
+            undisableSearchButton();
+        }
+    })
+}
+
+function disableSearchButton() {
+
+    buttonBtn.disabled = true;
+    buttonBtn.style.backgroundColor = '#fff';
+    buttonBtn.classList.add('hidden');
+}
+
+function undisableSearchButton () {
+    buttonBtn.disabled = false;
+    buttonBtn.classList.remove('hidden');
+}
+function dropLoading () {
+
+    doctor_title.innerText = '';
+}
+
+async function showLoading () {
+
+    let res = await fetch(`http://localhost:3000/api/onlydoctor/${doctor_id}`);
+
+    let data = await res.json();
+
+    let { first_name, last_name, practical_experience } = data[0];
+
+    doctor_title.innerText = first_name + ' ' + last_name + ' || ' + 'Specialized Doctor';
+}   
+
+
+showInformation();
+
+async function showInformation () {
+    
+    let res = await fetch(`http://localhost:3000/api/onlydoctor/${doctor_id}`);
+
+    let data = await res.json();
+
+    let { first_name, last_name, practical_experience, img, training_experience } = data[0];
+
+    doctor_name_El.innerText = first_name + ' ' + last_name + ' || ' + 'Specialized Doctor';
+    doctor_background.innerText = practical_experience;
+    doctor_image.src = img;
+
+    document.querySelector('.doctor-name-title').innerText = 'Specialized Doctor' + ' ' + first_name + ' ' + last_name;
+
+
+    let fixedExperience = practical_experience.split('@');
+
+    fixedExperience.forEach(expe => {
+
+        let li = document.createElement('li');
+        li.classList.add('training-experience-element');
+        li.innerHTML = `
+            ${expe}
+        `
+
+        training_experience_list.appendChild(li);
+    })
+
+    let fixedExperienceTwo = training_experience.split('@');
+
+    fixedExperienceTwo.forEach(expe => {
+
+        let li = document.createElement('li');
+        li.classList.add('prac-experience-element');
+        li.innerHTML = `
+            ${expe}
+        `
+
+        practical_experience_list.appendChild(li);
+    })
+}
+
+
+showFeedback();
+
+async function showFeedback () {
+    
+    let res = await fetch(`http://localhost:3000/api/feedback/${doctor_id}`);
+
+    let data = await res.json();
+
+    // let { first_name, last_name, practical_experience, img, training_experience } = data[0];
+
+    data.forEach(info => {
+
+        let li = document.createElement('li');
+        li.classList.add('feedbacks');
+        li.innerHTML = `
+            <p class="feedback-name"> ${info.first_name_patient} ${info.last_name_patient} </p>
+            <p class="feedback-content"> ${info.feedback_content} </p>
+        
+        `
+
+        feedback_list.appendChild(li);
+
+
+    })
+
+}
+
+showHospitalInfo();
+
+
+async function showHospitalInfo () {
+
+    let res = await fetch(`http://localhost:3000/api/hospitalfromdoctor/${doctor_id}`);
+
+    let data = await res.json();
+
+    let { hospitalname, location } = data[0];
+
+    hospital_name.innerText = hospitalname;
+    
+    hospital_address.innerText = location;
+
+}
+
+
+    </script>
+</body>
+</html>
