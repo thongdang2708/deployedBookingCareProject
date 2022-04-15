@@ -208,13 +208,16 @@ app.post('/post/register', async function (req,res) {
     let { rows } = await client.query("Select username from patient where username = $1 or email = $2",[username,email]);
 
     if (rows.length) {
-        console.log('This username or email already existed!')
+        console.log('This username or email already existed!');
+        res.redirect('/register')
     } else {
 
         if (passwordCheck.length < 6) {
             console.log('No insertion')
+            res.redirect('/register');
         } else if (passwordCheck !== passwordRepeat) {
             console.log('No insertion again!')
+            res.redirect('/register');
         } else {
             let salt = await bcrypt.genSalt(10);
 
