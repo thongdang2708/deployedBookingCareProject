@@ -26,6 +26,18 @@ app.get('/patient', async function (req,res) {
     // client.release();
 })
 
+app.get('/patient/:id', async function (req,res) {
+    
+    // let { rows } = await pool.query('Select first_name_patient from patient');
+
+    // res.status(200).json(rows);
+    let id = Number(req.params.id);
+    let client = await pool.connect();
+    let result = await client.query('SELECT * FROM patient where id = $1',[id]);
+    let results = result.rows;
+    res.json( results )
+    // client.release();
+})
 
 
 
