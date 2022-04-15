@@ -21,7 +21,7 @@ app.get('/patient', async function (req,res) {
 
     let client = await pool.connect();
     let result = await client.query('SELECT * FROM patient;');
-    let results = { 'results': (result) ? result.rows : null};
+    let results = result.rows;
     res.json( results )
     // client.release();
 })
