@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 app.use(cors());
 
-app.use(express.static(pathFile))
+app.use(express.static(pathView))
 app.set('view engine','hbs');
 
 
