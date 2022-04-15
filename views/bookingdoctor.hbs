@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="./bookingDoctor.css"> -->
+    <title> Booking Doctor </title>
+</head>
+
+    <style>
+        * {
+    box-sizing: border-box;
+   
+}
+
+body {
+    width: 120rem;
+    margin: 0;
+    background-color: white;
+}
+
+.logo-image {
+    width: 10rem;
+}
+
+.header {
+
+    width: 120rem;
+    /* overflow-x: hidden; */
+    padding: 13px 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    
+    margin: 0;
+    padding: 20px 250px;
+}
+
+.left-side {
+    display: flex;
+    width: 15rem;
+    z-index: 1;
+}
+
+.bookmark {
+    z-index: -1;
+}
+
+.logo-image {
+    margin-left: 30px;
+}
+
+.bookmark {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar-element {
+    width: 12rem;
+    cursor: pointer;
+    height: 100%;
+    padding: 4px 8px;
+    border-right: 1px #eee solid;
+}
+
+.nav-bar-element:hover {
+    background-color: rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* .nav-bar-element:first-child {
+    border-left: 1px #eee solid;
+} */
+
+
+
+.nav-bar-element:focus {
+    outline: none;
+}
+
+.right-side {
+    display: flex;
+    height: 100%;
+    margin-top: 0;
+    z-index: 1;
+}
+
+.first-child {
+    border-left: 1px #eee solid;
+}
+
+.upper-part {
+    font-weight: bold;
+}
+
+.navigation-bar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 100;
+    top: 0;
+}
+
+.nav-bar {
+    cursor: pointer;
+}
+.navigation-bar.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.navigation-container {
+    position: fixed;
+    background-color: white;
+    margin: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30vh;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index: 100;
+}
+
+.navigation-container.active {
+    transform: translateX(0);
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+.menu-element {
+    z-index: 1;
+}
+
+.menu-list li {
+    padding: 13px 20px;
+    border-bottom: 1px #eee solid;
+    font-size: 18px;
+}
+
+.menu-element.third {
+    border: 0;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: #45c3d2;
+}
+.social-media-icon {
+    height: 3vh;
+}
+
+.menu-element.brown {
+    background-color:  #f9f9f9;
+    color: black;
+    font-weight: normal;
+    border: 0;
+}
+
+
+
+.social-media {
+    padding: 13px 20px;
+}
+
+.doctor-image {
+    border-radius: 50%;
+    height: 120px;
+}
+
+.doctor-booking-info-part {
+    width: 120rem;
+    overflow-x: hidden;
+    background-color: #fff;
+    border-top: 1px #eee solid;
+}
+
+.doctor-booking-info {
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    padding: 20px 30px;
+}
+
+.detail-booking {
+    margin-left: 50px;
+}
+
+.doctor-title-and-name {
+    color:#45c3d2;
+}
+
+.detail-booking p {
+    font-weight: bold;
+}
+
+.common-box {
+    font-weight: normal;
+}
+
+.frame-for-form {
+    width: 120rem;
+    border: 1px #eee solid;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    background-color: #fff;
+}
+
+.form-box {
+    padding: 20px 30px;
+    border: 2px black solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    background-color: #f5f7fa;
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}  
+
+.label {
+    font-weight: bold;
+}
+
+.common-box {
+    margin: 20px 0;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px #eee solid;
+    padding: 15px 20px;
+}
+
+.common-box:focus {
+    outline: none;
+}
+
+.submit {
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 10px;
+    border: 1px black solid;
+    cursor: pointer;
+    
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.submit:active {
+    transform: scale(0.98);
+}
+/* .common-box::placeholder {
+    padding: 8px 13px;
+} */
+
+.confirm {
+    font-weight: bold;
+}
+
+.footer {
+    font-weight: bold;
+    width: 120rem;
+    background-color:#45c3d2;
+    margin: 0;
+    padding: 13px 26rem;
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+<body>
+    
+    <header id="header" class="header"> 
+        
+    <div class="left-side">
+        <i class="fa-solid fa-bars fa-2x" id="nav-bar" class="nav-bar"></i> 
+        <a href="/mainpage"> <img src="https://bookingcare.vn/assets/icon/bookingcare-2020.svg" alt="" class="logo-image"></a>
+        
+    </div>
+
+    <!-- <div class="right-side">
+
+        <a href="/specialist" class="bookmark">
+            <div class="nav-bar-element first-child">
+                <p class="upper-part"> Specialist </p>
+                <p class="lower-part"> Find a doctor by specialty </p>
+            </div>
+        </a>
+
+        <a href="/healthfacilities" class="bookmark">
+            <div class="nav-bar-element">
+                <p class="upper-part"> Health facilities </p>
+                <p class="lower-part"> Choose hospital clinic </p>
+            </div>
+        </a>
+
+        <a href="/doctor" class="bookmark">
+            <div class="nav-bar-element">
+                <p class="upper-part"> Doctor </p>
+                <p class="lower-part"> Choose a good doctor </p>
+            </div>
+        </a>
+
+    </div> -->
+
+    </header>
+
+    <div class="navigation-bar">
+    </div> 
+        <div class="navigation-container">
+        <ul class="menu-list">
+           <a href="/mainpage"> <li class="menu-element"> Home Page </li> </a>    
+          
+           <a href="/contactforcoop"> <li class="menu-element third"> Contact For Cooperation</li> </a> 
+
+        </ul>
+
+        <div class="social-media">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/youtube-square.svg" alt="" class="social-media-icon">
+            <img src="https://bookingcare.vn/themes/app1912/assets/img/social/facebook-square.svg" alt="" class="social-media-icon">
+
+        </div>
+    </div>
+
+    <main id="main" class="main"> 
+
+       <div class="doctor-booking-info-part">
+
+        <div class="doctor-booking-info">
+
+            <img src="" alt="" class="doctor-image" id="doctor-image">
+
+            <div class="detail-booking">
+
+                <p> Schedule a contact schedule </p>
+
+                <h3 class="doctor-title-and-name"> <span class="doctor-title" id="doctor-title">  </span> || <span class="doctor-name" id="doctor-name">  </span></h3>
+
+                <p class="booking-detail"> <span class="start-time" id="start-time">  </span> - <span class="end-time" id="end-time">  </span> - <span class="weekday" id="weekday">  </span> - <span class="date" id="date">  </span>/<span class="month" id="month">  </span>/<span class="year" id="year"> </span></p>
+
+            </div>
+
+
+
+
+        </div>
+       </div>
+
+    <div class="frame-for-form">
+    
+    <div class="form-box">
+    <h2> Patient Information To Book </h2>
+
+    <form action="/submitform" method="POST" id="form" class="form">
+    
+    <label class="label"> Doctor ID: </label> <br>
+    <input type="number" name="doctorid" id="doctor-id" class="common-box" readonly>  <br>
+
+    <label class="label"> Date: </label> <br>
+    <input type="text" name="date" id="insert-date" class="common-box" readonly> <br>
+
+    <label class="label"> Start Time: </label> <br>
+    <input type="text" name="starttime" id="start" class="common-box" readonly> <br>
+
+    <label class="label"> End Time: </label> <br>
+    <input type="text" name="endtime" id="end" class="common-box" readonly> <br>
+    <label class="label"> First Name: </label> <br>
+    <input type="text" name="firstname" id="first-name" class='common-box' placeholder= 'Please enter your first name...!' required> <br>
+
+    <label class="label"> Last Name: </label> <br>
+    <input type="text" name="lastname" id="last-name" class='common-box'placeholder="Please enter your last name...!" required> <br>
+
+    <label class="label"> City: </label> <br>
+    <input type="text" name="city" id="city" class="common-box" placeholder="Please enter your city in where you live...!"> <br>
+
+    <label class="label"> Phone Number: </label> <br>
+    <input type="text" name="phonenumber" id="phone-number" class="common-box" placeholder="Please enter your phone number...!" required> <br>
+
+    <label class="label"> Email: </label> <br>
+    <input type="email" name="email" id="email" class="common-box" placeholder="Please enter your email...!" required> <br>
+
+    <label class="label"> Disease Description: </label> <br>
+    <input type="text" name="description" id="description" class="common-box" placeholder="Please enter your disease...!" required> <br>
+
+    <div class="radio-box">
+    <input type="radio" name="gender" id="male" value="male" required>
+    <label for="male" id="male-text" class="label" > Male </label>
+    
+   
+    <input type="radio" name="gender" id="female" value="female" required>
+    <label for="female" id="female-text" class="label" > Female </label>
+</div>  
+
+    <button type="submit" id="submit" class="submit"> Submit </button>
+    <p class="confirm"> By confirming your booking, you fully agree to our Terms of Service! </p>
+    </form>
+
+
+    </div>
+</div>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <p class="copyright"> &#169; 2022 BookingCare. </p>
+
+        <p class="support"> <i class="fa-solid fa-phone"></i> Support: 090-8134-8239 </p>
+    </footer>
+
+
+
+    <!-- <script src="./bookingDoctor.js"></script>
+    <script src="./loadDataForBooking.js"></script> -->
+
+
+    <script>
+
+let nav_bar = document.getElementById('nav-bar');
+let navigation_bar = document.querySelector('.navigation-bar');
+let navigation_container = document.querySelector('.navigation-container');
+
+
+
+nav_bar.addEventListener('click', (ed) => {
+    ed.preventDefault();
+
+    navigation_bar.classList.add('active');
+    navigation_container.classList.add('active');
+})
+
+
+
+
+navigation_bar.addEventListener('click', () => {
+
+    navigation_bar.classList.remove('active');
+    navigation_container.classList.remove('active');
+    
+})
+
+
+let location_search = location.search.slice(1).split('|');
+
+console.log(location_search);
+let doctor_id = Number(location_search[0]);
+let weekday = location_search[1];
+let date = location_search[2];
+let month = location_search[3];
+let year = location_search[4];
+let start_time = location_search[5];
+let end_time = location_search[6];
+
+
+let doctor_image = document.getElementById('doctor-image');
+let doctor_title = document.getElementById('doctor-title');
+let doctor_name = document.getElementById('doctor-name');
+let start_time_date = document.getElementById('start-time');
+let end_time_date = document.getElementById('end-time');
+let weekday_date = document.getElementById('weekday');
+let date_date = document.getElementById('date');
+let month_date = document.getElementById('month');
+let year_date = document.getElementById('year');
+let doctor_idNumber = document.getElementById('doctor-id');
+let insert_date = document.getElementById('insert-date');
+let start = document.getElementById('start');
+let end = document.getElementById('end');
+
+loadFromLocationSearch();
+
+function loadFromLocationSearch () {
+
+    doctor_idNumber.value = doctor_id;
+    insert_date.value = weekday + ' ' + date + '/' + month + '/' + year;
+    start.value = start_time;
+    end.value = end_time;
+
+}
+
+loadDoctorData();
+async function loadDoctorData () {
+
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlydoctor/${doctor_id}`);
+
+    let data = await res.json();
+
+    addToDom(data);
+}
+
+function addToDom (data) {
+
+    let { first_name, last_name, img } = data[0];
+
+    doctor_name.innerText = first_name + ' ' + last_name;
+    doctor_title.innerText = 'Specialized Doctor';
+    doctor_image.src = img;
+    start_time_date.innerText = start_time;
+    end_time_date.innerText = end_time;
+    weekday_date.innerText = weekday;
+    date_date.innerText = date;
+    month_date.innerText = month;
+    year_date.innerText = year;
+}
+
+
+
+
+
+    </script>
+</body>
+</html>

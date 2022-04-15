@@ -722,11 +722,7 @@ body {
 <body>
     
     <header id="header" class="header">
-    <div class="doctor-role">
-        <a href="/searchdoctor" class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Search Doctor </span></a>
-        <div class="doctor-title">  </div>
-    </div>
-
+        <div> <a class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Search Doctor </span></a></div>
         <div class="icon-header" id="nav-bar"> <i class="fa-solid fa-bars fa-2x"></i> </div>
     </header>
 
@@ -759,8 +755,8 @@ body {
     </div> 
         <div class="navigation-container">
         <ul class="menu-list">
-           <a href="/mainpage"> <li class="menu-element"> Home Page </li> </a>    
-           <a href="/contactforcoop"> <li class="menu-element third"> Contact For Cooperation</li> </a> 
+           <a href="/login"> <li class="menu-element"> Log Out </li> </a>    
+           <!-- <a href="/contactforcoop"> <li class="menu-element third"> Contact For Cooperation</li> </a>  -->
            
         </ul>
 
@@ -1025,7 +1021,13 @@ let box_detail = document.querySelector('.box-detail-two');
 
 let show_role = document.querySelector('.show-role');
 
-let doctor_id = Number(location.search.slice(1));
+let location_search = location.search.slice(1).split('|');
+let doctor_id = Number(location_search[0]);
+let patient_id_number = Number(location_search[1]);
+let icon_header = document.querySelector('.header a');
+
+icon_header.setAttribute('href',`/bookingforpatient/?${patient_id_number}`);
+console.log(location_search);
 
 
 
@@ -1185,13 +1187,13 @@ function addHoursToBookingValues () {
 
         let a = document.createElement('a');
         a.classList.add('button-click-date');
-        a.href = `/form/?${doctor_id}|${weekday}|${date}|${month}|${year}|${start_time}|${end_time}`;
+        a.href = `/formforpatient/?${doctor_id}|${weekday}|${date}|${month}|${year}|${start_time}|${end_time}|${patient_id_number}`;
         a.setAttribute('date',date);
         a.setAttribute('month',month);
         a.setAttribute('start_time',start_time);
         a.setAttribute('end_time',end_time);
         a.setAttribute('year',year);
-
+        console.log(a);
         let button = document.createElement('button');
         button.classList.add('button');
         button.classList.add('animated-btn');

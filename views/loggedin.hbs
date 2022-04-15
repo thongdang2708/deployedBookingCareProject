@@ -177,7 +177,7 @@ a:hover {
         console.log(id_number);
         async function fetchPatient () {
 
-            let res = await fetch(`http://localhost:3000/api/patient/${id_number}`);
+            let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/patient/${id_number}`);
 
             let data = await res.json();
 

@@ -265,111 +265,125 @@ app.post('/login', async function (req,res) {
 
 })
 
-// app.get('/searchdoctor', function (req,res) {
-//     res.sendFile(pathView + '/searchDoctor.html')
-// });
+app.get('/searchdoctor', function (req,res) {
+    // res.sendFile(pathView + '/searchDoctor.html')
+    res.render('searchDoctor')
+});
 
-// app.get('/doctor', function (req,res) {
-//     res.sendFile(pathView + '/doctor.html');
-// })
+app.get('/doctor', function (req,res) {
+    // res.sendFile(pathView + '/doctor.html');
+    res.render('doctor')
+})
 
-// app.get('/healthfacilities', function (req,res) {
-//     res.sendFile(pathView + '/healthfacility.html');
-// })
+app.get('/healthfacilities', function (req,res) {
+    // res.sendFile(pathView + '/healthfacility.html');
 
-// app.get('/specialist', function (req,res) {
-//     res.sendFile(pathView + '/specialist.html');
-// })
+    res.render('healthfacility');
+})
 
-// app.get('/specialization', function (req,res) {
-//     res.sendFile(pathView + '/specialization.html')
-// })
+app.get('/specialist', function (req,res) {
+    // res.sendFile(pathView + '/specialist.html');
+    res.render('specialist');
+})
 
-// app.get('/contactforcoop', function (req, res) {
-//     res.sendFile(pathView + '/contact.html')
-// })
+app.get('/specialization', function (req,res) {
+    // res.sendFile(pathView + '/specialization.html')
+    res.render('specialization')
+})
 
-// app.get('/form', function (req,res) {
-//     res.sendFile(pathView + '/bookingdoctor.html');
-// })
+app.get('/contactforcoop', function (req, res) {
+    // res.sendFile(pathView + '/contact.html')
+    res.render('contact')
+})
 
-// app.get('/bookingforpatient', function (req,res) {
-//     res.sendFile(pathView + '/bookingforpatient.html');
-// })
+app.get('/form', function (req,res) {
+    // res.sendFile(pathView + '/bookingdoctor.html');
 
-// app.get('/doctorlistforpatient', function (req,res) {
-//     res.sendFile(pathView + '/doctorlistforpatient.html');
-// })
+    res.render('bookingdoctor');
+})
 
-// app.get('/formforpatient', function (req,res) {
-//     res.sendFile(pathView + '/formforpatient.html');
-// })
+app.get('/bookingforpatient', function (req,res) {
+    // res.sendFile(pathView + '/bookingforpatient.html');
+    res.render('bookingforpatient');
+})
 
-// app.post('/submitformforpatient' , async function (req,res) {
-//     let { doctorid, patientid, date, starttime, endtime, description } = req.body;
+app.get('/doctorlistforpatient', function (req,res) {
+    // res.sendFile(pathView + '/doctorlistforpatient.html');
+    res.render('doctorlistforpatient');
+})
+
+app.get('/formforpatient', function (req,res) {
+    // res.sendFile(pathView + '/formforpatient.html');
+    res.render('formforpatient');
+})
+
+app.post('/submitformforpatient' , async function (req,res) {
+    let { doctorid, patientid, date, starttime, endtime, description } = req.body;
     
-//     let doctor_id = Number(doctorid);
-//     let patient_id = Number(patientid);
-//     let date_el = date.split(' ')[1].split('/')[0].toString();
-//     let month_el = date.split(' ')[1].split('/')[1].toString();
-//     let year_el = date.split(' ')[1].split('/')[2].toString();
-//     let client = await pool.connect();
-//     client.query("Insert into confirmbooking (doctor_id,patient_id,description,date,month,year,start_time,end_time) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)", [doctor_id,patient_id,description,date_el,month_el,year_el,starttime,endtime], (err,result) => {
+    let doctor_id = Number(doctorid);
+    let patient_id = Number(patientid);
+    let date_el = date.split(' ')[1].split('/')[0].toString();
+    let month_el = date.split(' ')[1].split('/')[1].toString();
+    let year_el = date.split(' ')[1].split('/')[2].toString();
+    let client = await pool.connect();
+    client.query("Insert into confirmbooking (doctor_id,patient_id,description,date,month,year,start_time,end_time) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)", [doctor_id,patient_id,description,date_el,month_el,year_el,starttime,endtime], (err,result) => {
 
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.redirect('/loggedin')
-//         }
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/loggedin')
+        }
 
 
-//     });
+    });
 
-//     client.release();
+    client.release();
 
-// })
+})
 
-// app.post('/submitform' , async function (req,res) {
-//     let { doctorid, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
+app.post('/submitform' , async function (req,res) {
+    let { doctorid, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
     
  
 
-//     let doctor_id = Number(doctorid);
-//     // let patient_id = Number(patientid);
-//     let date_el = date.split(' ')[1].split('/')[0].toString();
-//     let month_el = date.split(' ')[1].split('/')[1].toString();
-//     let year_el = date.split(' ')[1].split('/')[2].toString();
+    let doctor_id = Number(doctorid);
+    // let patient_id = Number(patientid);
+    let date_el = date.split(' ')[1].split('/')[0].toString();
+    let month_el = date.split(' ')[1].split('/')[1].toString();
+    let year_el = date.split(' ')[1].split('/')[2].toString();
 
-//     console.log(doctor_id,date_el,month_el,year_el);
+    console.log(doctor_id,date_el,month_el,year_el);
     
-//     let client = await pool.connect();
-//     client.query("Insert into confirmbooking (doctor_id,description,date,month,year,start_time,end_time) VALUES ($1,$2,$3,$4,$5,$6,$7)", [doctor_id,description,date_el,month_el,year_el,starttime,endtime], (err,result) => {
+    let client = await pool.connect();
+    client.query("Insert into confirmbooking (doctor_id,description,date,month,year,start_time,end_time) VALUES ($1,$2,$3,$4,$5,$6,$7)", [doctor_id,description,date_el,month_el,year_el,starttime,endtime], (err,result) => {
 
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render('bookedsuccess', {
-//                 firstname: firstname,
-//                 lastname : lastname,
-//                 date : date,
-//                 start_time : starttime,
-//                 end_time : endtime,
-//             })
-//         }
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('bookedsuccess', {
+                firstname: firstname,
+                lastname : lastname,
+                date : date,
+                start_time : starttime,
+                end_time : endtime,
+            })
+        }
 
 
-//     });
-//     client.release();
+    });
+    client.release();
 
-// })
+})
 
-// app.get('/doctorbookinglink', function (req,res) {
-//     res.sendFile(pathView + '/doctorbookinglink.html');
-// });
+app.get('/doctorbookinglink', function (req,res) {
+    // res.sendFile(pathView + '/doctorbookinglink.html');
+    res.render('doctorbookinglink');
+});
 
-// app.get('/specializationlink', function (req,res) {
-//     res.sendFile(pathView + '/specializationlink.html');
-// })
+app.get('/specializationlink', function (req,res) {
+    res.sendFile(pathView + '/specializationlink.html');
+    res.render('specializationlink');
+})
 
 
 

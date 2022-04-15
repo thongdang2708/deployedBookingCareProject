@@ -921,7 +921,7 @@ formsearch.addEventListener('keyup', async (e) => {
 
     let text = e.target.value.trim().toLowerCase();
 
-    let res = await fetch('http://localhost:3000/api/alldoctors');
+    let res = await fetch('https://bookingcarecheck.herokuapp.com/api/alldoctors');
 
     let data = await res.json();
 
@@ -983,7 +983,7 @@ formsearch.addEventListener('keyup', async (e) => {
 async function fetchSecond (text) {
 
    
-    let res = await fetch('http://localhost:3000/api/allspecial');
+    let res = await fetch('https://bookingcarecheck.herokuapp.com/api/allspecial');
 
     let data = await res.json();
 

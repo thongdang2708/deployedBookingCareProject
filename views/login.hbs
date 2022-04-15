@@ -39,6 +39,130 @@
     cursor: pointer;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    padding: 13px 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    border: 1px black solid;
+    width: 20rem;
+}
+
+.form h2 {
+    text-align: center;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.common {
+    margin-bottom: 20px;
+}
+
+.frame {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px black solid;
+}
+
+.frame:focus {
+    outline: none;
+    outline-color:aliceblue; 
+}
+
+.script {
+    text-align: center;
+}
+
+.link-to-login {
+    text-decoration: none;
+    color: #45c3d2;
+}
+
+.submit {
+    padding: 13px 20px;
+    width: 100%;
+    display: inline-block;
+    background-color: #fff;
+    border: 1px black solid;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.submit:active {
+    transform: scale(0.98);
+}
+
+.eye-contact {
+    position: absolute;
+    transform: translateX(-99.5%);
+    height: 39px;
+    cursor: pointer;
+    width: 2.5rem;
+}
+
+.eye-contact:focus {
+    outline: none;
+}
+
+.eye-contact-confirm {
+    position: absolute;
+    transform: translateX(-99.5%);
+    height: 39px;
+    cursor: pointer;
+    width: 2.5rem;
+}
+
+.fa-eye-slash {
+    display: none;
+}
+
+.eye-contact.active .fa-eye-slash {
+    display: block;
+}
+
+.eye-contact.active .fa-eye {
+    display: none;
+}
+
+.eye-contact-confirm.active .fa-eye-slash {
+    display: block
+}
+
+.eye-contact-confirm.active .fa-eye {
+    display: none;
+}
+
+.paragraph {
+    background-color: #45c3d2;
+    padding: 15px 25px;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px black solid;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 
     </style>
