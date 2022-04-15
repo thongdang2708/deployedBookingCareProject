@@ -5,7 +5,7 @@ let app = express();
 
 let port = process.env.PORT || 3000;
 
-app.get('/alldoctors', function (req,res) {
+app.get('/alldoctors', async function (req,res) {
     
     let client = await pool.connect();
 
