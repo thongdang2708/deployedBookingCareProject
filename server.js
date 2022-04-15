@@ -209,15 +209,12 @@ app.post('/post/register', async function (req,res) {
 
     if (rows.length) {
         console.log('This username or email already existed!')
-        res.redirect('/post/register');
     } else {
 
         if (passwordCheck.length < 6) {
             console.log('No insertion')
-            res.redirect('/post/register');
         } else if (passwordCheck !== passwordRepeat) {
             console.log('No insertion again!')
-            res.redirect('/post/register');
         } else {
             let salt = await bcrypt.genSalt(10);
 
