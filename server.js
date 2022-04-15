@@ -12,6 +12,10 @@ const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 app.use(cors());
 
+// let router = require('./test');
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 console.log(pathView);
 app.use(express.static(pathView))
 app.set('view engine','hbs');
@@ -158,6 +162,20 @@ app.get('/post/register', function (req,res) {
     res.render('register')
 })
 
+app.get('/feedback/:id', async function (req,res) {
+
+    let id = Number(req.params.id);
+
+    let { rows } = await pool.query("Select * from feedback inner join patient on feedback.patient_id = patient.patient_id where feedback.doctor_id = $1",[id])
+
+    if (!rows) {
+        res.status(404).json({error : "error"})
+    } else {
+        res.status(200).json(rows);
+    }
+
+})
+
 app.post('/post/register', async function (req,res) {
 
     let { username, password, password_repeat, firstname, lastname, location, phone, email } = req.body;
@@ -297,9 +315,9 @@ app.get('/contactforcoop', function (req, res) {
 })
 
 app.get('/form', function (req,res) {
-    // res.sendFile(pathView + '/bookingdoctor.html');
+    res.sendFile(pathView + '/bookingdoctor.html');
 
-    res.render('bookingdoctor');
+    
 })
 
 app.get('/bookingforpatient', function (req,res) {
@@ -319,7 +337,7 @@ app.get('/formforpatient', function (req,res) {
 
 app.post('/submitformforpatient' , async function (req,res) {
     let { doctorid, patientid, date, starttime, endtime, description } = req.body;
-    
+
     let doctor_id = Number(doctorid);
     let patient_id = Number(patientid);
     let date_el = date.split(' ')[1].split('/')[0].toString();
@@ -337,9 +355,10 @@ app.post('/submitformforpatient' , async function (req,res) {
 
     });
 
-    client.release();
+    // client.release();
 
 })
+
 
 app.post('/submitform' , async function (req,res) {
     let { doctorid, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
@@ -384,11 +403,6 @@ app.get('/specializationlink', function (req,res) {
     res.sendFile(pathView + '/specializationlink.html');
     res.render('specializationlink');
 })
-
-
-
-
-
 
 
 

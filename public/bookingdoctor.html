@@ -507,7 +507,7 @@ function loadFromLocationSearch () {
 loadDoctorData();
 async function loadDoctorData () {
 
-    let res = await fetch(`http://localhost:3000/api/onlydoctor/${doctor_id}`);
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlydoctor/${doctor_id}`);
 
     let data = await res.json();
 
