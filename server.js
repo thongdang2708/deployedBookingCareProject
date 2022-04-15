@@ -39,6 +39,24 @@ app.get('/patient/:id', async function (req,res) {
     // client.release();
 })
 
+app.get('/feedback', async function (req,res) {
+    
+    // let { rows } = await pool.query('Select first_name_patient from patient');
+
+    // res.status(200).json(rows);
+
+    let client = await pool.connect();
+    let result = await client.query('SELECT * FROM feedback;');
+    let results = result.rows;
+    res.json( results )
+    // client.release();
+})
+
+
+
+
+
+
 
 
 app.get('/page', function (req,res) {
