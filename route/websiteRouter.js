@@ -171,7 +171,7 @@ router.get('/formforpatient', function (req,res) {
     res.sendFile(pathView + '/formforpatient.html');
 })
 
-router.post('/submitformforpatient' , function (req,res) {
+router.post('/submitformforpatient' , async function (req,res) {
     let { doctorid, patientid, date, starttime, endtime, description } = req.body;
     
     let doctor_id = Number(doctorid);
@@ -195,7 +195,7 @@ router.post('/submitformforpatient' , function (req,res) {
 
 })
 
-router.post('/submitform' , function (req,res) {
+router.post('/submitform' , async function (req,res) {
     let { doctorid, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
     
  
