@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express ();
 let pool = require('./database');
+let path = require('path');
 const pathView = path.join(__dirname,'../public');
 let bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
