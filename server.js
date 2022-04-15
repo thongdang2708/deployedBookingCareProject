@@ -147,7 +147,7 @@ app.get('/patient/:id', async function (req,res) {
 })
 
 app.get('/mainpage', function (req,res) {
-    res.sendFile(pathView + '/mainpage.html');
+   res.render('mainpage');
 })
 
 
