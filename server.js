@@ -179,6 +179,23 @@ app.get('/api/feedback/:id', async function (req,res) {
     client.release();
 })
 
+app.get('/api/getuser', async function (req,res) {
+    // let { rows } = await pool.query("Select username, email from patient");
+
+    // res.status(200).json(rows);
+
+
+    let client = await pool.connect();
+
+    let { rows } = await client.query("Select username, email from patient");
+
+
+    res.json(rows);
+    client.release();
+
+})
+
+
 app.post('/post/register', async function (req,res) {
 
     let { username, password, password_repeat, firstname, lastname, location, phone, email } = req.body;
