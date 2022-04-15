@@ -168,7 +168,7 @@ app.get('/api/feedback/:id', async function (req,res) {
 
     let client = await pool.connect();
 
-    let { rows } = await client.query("SELECT * FROM confirmbooking inner join doctor on confirmbooking.doctor_id = doctor.doctor_id inner join patient on confirmbooking.patient_id = patient.patient_id where patient.patient_id = $1",[id])
+    let { rows } = await client.query("Select * from feedback inner join doctor on feedback.doctor_id = doctor.doctor_id inner join patient on feedback.patient_id = patient.patient_id where doctor.doctor_id = $1",[id])
 
     if (!rows) {
         res.status(404).json({error : "error"})
