@@ -1,6 +1,7 @@
-let express = express ();
+let express = require('express');
+let app = express ();
 let pool = require('./database');
-let app = express();
+
 
 
 let port = process.env.PORT || 3000;
