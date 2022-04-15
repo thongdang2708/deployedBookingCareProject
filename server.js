@@ -342,11 +342,11 @@ app.post('/submitformforpatient' , async function (req,res) {
 })
 
 app.post('/submitform' , async function (req,res) {
-    let { doctor_id_el, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
+    let { doctorid, date, starttime, endtime, firstname, lastname, city, phonenumber, email, description, gender } = req.body;
     
- 
+    console.log(req.body);
 
-    let doctor_id = Number(doctor_id_el);
+    let doctor_id = Number(doctorid);
     // let patient_id = Number(patientid);
     let date_el = date.split(' ')[1].split('/')[0].toString();
     let month_el = date.split(' ')[1].split('/')[1].toString();
