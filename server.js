@@ -4,15 +4,7 @@ let app = express();
 let cors = require('cors');
 let path = require('path');
 
-const Pool = require('pg').Pool;
-
-const pool = new Pool({
-    user : "postgres",
-    host : "localhost",
-    database : "postgres",
-    password : "1998",
-    port : 5432
-})
+let pool = require('./database');
 
 
 
@@ -21,12 +13,17 @@ app.use(cors());
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
-app.get('/doctor', async function (req,res) {
+app.get('/patient', async function (req,res) {
     
-    let { rows } = await pool.query('Select first_name_patient from patient');
+    // let { rows } = await pool.query('Select first_name_patient from patient');
 
-    res.status(200).json(rows);
+    // res.status(200).json(rows);
 
+    let client = await pool.connect();
+    let result = await client.query('SELECT * FROM patient;');
+    let results = { 'results': (result) ? result.rows : null};
+    res.json( results )
+    client.release();
 })
 
 
