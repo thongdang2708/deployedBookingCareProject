@@ -150,6 +150,23 @@ app.get('/api/patient/:id', async function (req,res) {
     client.release();
 })
 
+app.get('/api/onlypatient/:id', async function (req,res) {
+    let client = await pool.connect();
+    let id = Number(req.params.id);
+
+    let { rows } = await client.query("Select * from patient where patient_id = $1",[id])
+
+    if (!rows) {
+        res.status(404).json({error : "error"})
+    } else {
+        res.status(200).json(rows);
+    }
+
+    client.release();
+})
+
+
+
 app.get('/mainpage', function (req,res) {
    res.render('mainpage');
 })

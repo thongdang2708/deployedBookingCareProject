@@ -724,7 +724,7 @@ body {
     <header id="header" class="header">
     <div class="doctor-role">
         <a href="/searchdoctor" class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Search Doctor </span></a>
-        <div class="doctor-title">  </div>
+        <strong class="doctor-title">  </strong>
     </div>
 
         <div class="icon-header" id="nav-bar"> <i class="fa-solid fa-bars fa-2x"></i> </div>
@@ -1395,7 +1395,7 @@ scrollEffect()
 function scrollEffect () {
     let bottom = header.getBoundingClientRect().bottom;
 
-    let bottomOne = bottom - 10;
+    let bottomOne = bottom;
     
     let topButton = buttonBtn.getBoundingClientRect().top;
 
@@ -1405,52 +1405,59 @@ function scrollEffect () {
 
     window.addEventListener('scroll', () => {
 
-        let {scrollTop} = document.documentElement;
-
-        if (scrollTop >= bottomOne) {
+        let {scrollTop, clientTop } = document.documentElement;
+        
+        //console.log(bottomOne);
+        if (scrollTop > 100) {
             showLoading();
-        } else if (scrollTop < 5 || scrollTop === 0) {
+        } else if (scrollTop === 0) {
             dropLoading();
-        } 
-        console.log(scrollTop);
-        if (scrollTop > topButton + 15 ) {
-            disableSearchButton();
-        } else if (scrollTop < topButton + 15) {
-            undisableSearchButton();
         }
+        //} 
+         // console.log(scrollTop);
+         // if (scrollTop > topButton + 15 ) {
+           //   disableSearchButton();
+         // } else if (scrollTop < topButton + 15) {
+          //    undisableSearchButton();
+         // }
     })
 }
 
-function disableSearchButton() {
+//function disableSearchButton() {
 
-    buttonBtn.disabled = true;
-    buttonBtn.style.backgroundColor = '#fff';
-    buttonBtn.classList.add('hidden');
-}
+ //   buttonBtn.disabled = true;
+//    buttonBtn.style.backgroundColor = '#fff';
+ //   buttonBtn.classList.add('hidden');
+//}
 
-function undisableSearchButton () {
-    buttonBtn.disabled = false;
-    buttonBtn.classList.remove('hidden');
-}
+ // function undisableSearchButton () {
+  //    buttonBtn.disabled = false;
+  //    buttonBtn.classList.remove('hidden');
+ // }
 
 
 async function showLoading () {
 
+    
+    
     let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlydoctor/${doctor_id}`);
 
     let data = await res.json();
-
+    console.log(data);
     let { first_name, last_name, practical_experience } = data[0];
-
     doctor_title.innerText = `${first_name} ${last_name} || Specialized Doctor`
     //doctor_title.appendChild = first_name + ' ' + last_name + ' || ' + 'Specialized Doctor';
-   
     
+   
+
 }   
 
 function dropLoading () {
+    
+     
+         document.querySelector('.doctor-title').innerHTML = '';
    
-    doctor_title.innerText = '';
+    
 }
 
 showInformation();

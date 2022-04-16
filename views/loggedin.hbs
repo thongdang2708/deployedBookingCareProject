@@ -180,7 +180,7 @@ a:hover {
             let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/patient/${id_number}`);
 
             let data = await res.json();
-
+            console.log(data);
             data.forEach(info => {
 
                 let li = document.createElement('li');
@@ -199,8 +199,6 @@ a:hover {
                 document.querySelector('.email').innerText = info.email;
                 document.querySelector('.phone_number').innerText = info.phone_number;
             })
-
-
 
         }
 
