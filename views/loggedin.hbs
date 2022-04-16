@@ -195,14 +195,27 @@ a:hover {
                 
                 `
                 document.querySelector('.list').appendChild(li);
-                document.querySelector('.name').innerText = info.first_name_patient + ' ' + info.last_name_patient;
-                document.querySelector('.email').innerText = info.email;
-                document.querySelector('.phone_number').innerText = info.phone_number;
+                //document.querySelector('.name').innerText = info.first_name_patient + ' ' + info.last_name_patient;
+                //document.querySelector('.email').innerText = info.email;
+                //document.querySelector('.phone_number').innerText = info.phone_number;
             })
 
         }
 
+        fetchOnlyPatientInfo();
 
+        async function fetchOnlyPatientInfo() {
+
+            let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlypatient/${id_number}`);
+
+            let data = await res.json();
+
+            data.forEach(info => {
+                document.querySelector('.name').innerText = info.first_name_patient + ' ' + info.last_name_patient;
+                document.querySelector('.email').innerText = info.email;
+                document.querySelector('.phone_number').innerText = info.phone_number;
+            })
+        }
 
 
 
