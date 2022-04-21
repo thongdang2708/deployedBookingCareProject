@@ -294,7 +294,8 @@ app.post('/login', async function (req,res) {
         console.log(rows);
 
         if (!rows.length) {
-            return res.status(400).send('invalid!');
+            // return res.status(400).send('invalid!');
+            return res.redirect('/rejectform');
         } else {
             
             try {
@@ -307,7 +308,8 @@ app.post('/login', async function (req,res) {
                     res.cookie('token',token);
                     return res.redirect('/loggedin');
                 } else {
-                    return res.status(200).send('Not allowed!');
+                    // return res.status(200).send('Not allowed!');
+                    return res.redirect('/rejectform');
                 }
 
 
@@ -444,10 +446,9 @@ app.get('/specializationlink', function (req,res) {
     res.render('specializationlink');
 })
 
-
-
-
-
+app.get('/rejectform', function (req,res) {
+    res.render('rejectform');
+})
 
 
 
