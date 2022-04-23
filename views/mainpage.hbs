@@ -750,7 +750,7 @@ fetchDom();
 
 async function fetchDom () {
 
-    let res = await fetch('http://localhost:3000/api/alldoctors');
+    let res = await fetch('https://bookingcarecheck.herokuapp.com/api/alldoctors');
 
     let data = await res.json();
 
@@ -816,7 +816,7 @@ fetchDomThree();
 
 async function fetchDomThree () {
 
-    let res = await fetch('http://localhost:3000/api/allspecial');
+    let res = await fetch('https://bookingcarecheck.herokuapp.com/api/allspecial');
 
     let data = await res.json();
 
