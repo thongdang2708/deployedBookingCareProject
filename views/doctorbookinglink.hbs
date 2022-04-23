@@ -1273,7 +1273,7 @@ function animatedButton () {
 async function checkBookedHours () {
     let allBookingDates = document.querySelectorAll('.button-click-date');
 
-    let res = await fetch(`https://bookingcarecheck.herokuapp.com//api/doctor/${doctor_id}`);
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/doctor/${doctor_id}`);
     let data = await res.json();
     let mappedData = data.map(info => ({
         date: info.date,
@@ -1478,7 +1478,7 @@ function dropLoading () {
 
 async function showLoading () {
 
-    let res = await fetch(`https://bookingcarecheck.herokuapp.com//api/onlydoctor/${doctor_id}`);
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlydoctor/${doctor_id}`);
 
     let data = await res.json();
 
@@ -1492,7 +1492,7 @@ showInformation();
 
 async function showInformation () {
     
-    let res = await fetch(`https://bookingcarecheck.herokuapp.com//api/onlydoctor/${doctor_id}`);
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/onlydoctor/${doctor_id}`);
 
     let data = await res.json();
 
@@ -1565,7 +1565,7 @@ showHospitalInfo();
 
 async function showHospitalInfo () {
 
-    let res = await fetch(`https://bookingcarecheck.herokuapp.com//api/hospitalfromdoctor/${doctor_id}`);
+    let res = await fetch(`https://bookingcarecheck.herokuapp.com/api/hospitalfromdoctor/${doctor_id}`);
 
     let data = await res.json();
 
