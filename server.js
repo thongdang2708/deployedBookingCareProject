@@ -442,7 +442,6 @@ app.get('/doctorbookinglink', function (req,res) {
 });
 
 app.get('/specializationlink', function (req,res) {
-    res.sendFile(pathView + '/specializationlink.html');
     res.render('specializationlink');
 })
 
