@@ -60,6 +60,8 @@ app.get('/api/allresult', async function (req,res) {
     client.release();
 });
 
+
+
 app.get('/api/hospital', async function (req,res) {
     let client = await pool.connect();
     let { rows } = await client.query("Select * from hospitalinfo;");
@@ -134,7 +136,25 @@ app.get('/api/special/:id', async function (req,res) {
     }
 
     client.release();
-})
+});
+
+app.get('/api/hospitalfromdoctor/:id', async function (req,res) {
+    let client = await pool.connect();
+    let id = Number(req.params.id);
+
+    // let { rows } = await pool.query("SELECT * FROM specialization inner join doctor on specialization.specialization_id = doctor.specialization_id where specialization.specialization_id = $1",[id])
+    let { rows } = await client.query("Select * from doctor inner join hospitalinfo on doctor.hospital_id = hospitalinfo.hospital_id where doctor.doctor_id = $1",[id]);
+    if (!rows) {
+        res.status(404).json({error : "error"})
+    } else {
+        res.status(200).json(rows);
+    }
+
+    client.release();
+});
+
+
+
 
 app.get('/api/patient/:id', async function (req,res) {
     let client = await pool.connect();
