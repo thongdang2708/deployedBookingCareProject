@@ -10,6 +10,7 @@ let bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 app.use(cookieParser());
+// app.use(cors());
 app.use(cors());
 
 // let router = require('./test');
