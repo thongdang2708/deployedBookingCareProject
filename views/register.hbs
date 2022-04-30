@@ -22,6 +22,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100vw;
 }
 
 .form {
@@ -31,7 +32,11 @@ body {
     border: 1px black solid;
 }
 
-
+.form-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
 
 .common {
     margin-bottom: 20px;
@@ -68,12 +73,10 @@ body {
 }
 
 .container {
-    width: 1000px;
-    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+    border: 1px black solid;
 }
 
 .submit {
@@ -84,6 +87,11 @@ body {
     border: 1px black solid;
     cursor: pointer;
     border-radius: 3px;
+};
+
+.form-container {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .submit:focus {
