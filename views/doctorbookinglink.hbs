@@ -13,35 +13,41 @@
     <style>
 
 
-
-
-
-* {
+        * {
     box-sizing: border-box;
 
 }
 
 body {
     margin: 0;
-    max-width: 80vh;
+    width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
-    /* overflow-x: hidden; */
+    /* overflow-x: hidden;   /* 
     /* overflow-x: hidden; */
 }
 
 .header {
     margin: 0;
     background-color: #45c3d2;
-    width: 240%;
+    /* width: 240%; 
     height: 10vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around; */
     position: sticky;
     top: 0;
     z-index: 1;
     overflow: hidden;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
 .icon-header {
@@ -66,6 +72,8 @@ body {
     visibility: visible;
     opacity: 1;
 }
+
+
 
 .navigation-container {
     position: fixed;
@@ -141,16 +149,16 @@ body {
 
 .doctor-booking-info {
     margin: 0 auto;
-    height: 100vh;
-    max-width: 50%;
+      /* height: 100vh; */
+    max-width: 1000px;
     /* border: 1px black solid; */
     
 }
 
 .frame-for-booking-info {
-    margin: 0 auto;
+    /* margin: 0 auto;
     height: 160vh;
-    width: 240%;
+    width: 240%; */
     /* border-bottom: 1px black solid; */
 
 }
@@ -287,23 +295,28 @@ body {
 }
 
 .doctor-description-box {
-    margin: 0 auto;
+    /*margin: 0 auto; */
     border-bottom: 1px black solid;
+    border-top: 1px black solid;
     background-color: #eee;
     z-index: -1;
-    border: 1px black solid;
-    margin-right: 0;
-    width: 192vh;
-    overflow-x: hidden;
+     /*width: 192vh; */
+     /*overflow-x: hidden; */
+}
+
+
+.doctor-container {
+    margin: 0 auto;
+    max-width: 1500px;
 }
 
 .doctor-name-and-title {
-    transform: translateX(18%);
+    /* transform: translateX(18%); */
     padding: 13px 20px;
 }
 
 .training-experience {
-    transform: translateX(18%);
+   /* transform: translateX(18%); */
     padding: 13px 20px;
    
 }
@@ -313,7 +326,7 @@ body {
 }
 
 .practical-experience {
-    transform: translateX(18%);
+   /* transform: translateX(18%); */
     padding: 13px 20px;
 }
 
@@ -324,21 +337,19 @@ body {
 
 .feedback-comment {
     border-bottom: 1px black solid;
-    width: 100%;
     z-index: -1;
     background-color: #eee;
     padding: 13px 20px;
-    width: 192vh;
-    overflow-x: hidden;
+   
 }
 
 .feedback-title {
-    transform: translateX(18%);
+   
     padding: 13px 20px;
 }
 
 .feedback-list {
-    transform: translateX(18%);
+   
     list-style: none;
     padding: 0;
 }
@@ -346,86 +357,13 @@ body {
 .feedback-list li {
     padding: 5px 10px;
     border-top: 1px white solid;
-    width: 80rem;
+    /* width: 80rem; */
     padding: 13px 20px;
 }
 
 .feedback-name {
     font-weight: bold;
     font-size: 15px;
-}
-
-/* .place-to-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-} */
-
-@media (min-width: 100px) {
-
-.show-role {
-    width: 50%;
-    background-color: white;
-    border: 1px rgba(0, 0, 0, 0.4) solid;
-    cursor: pointer;
-    padding: 13px 20px;
-    color: #45c3d2;
-    margin-top: 50px;
-    border-radius: 10px;
-
-}
-
-.place-to-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-}
-
-
-
-
-@media (min-width: 1800px) {
-
-.show-role {
-    width: 40%;
-    background-color: white;
-    border: 1px rgba(0, 0, 0, 0.4) solid;
-    cursor: pointer;
-    padding: 13px 20px;
-    color: #45c3d2;
-    margin-top: 50px;
-    border-radius: 10px;
-
-}
-
-.place-to-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-}
-
-@media (min-width: 1700px) and (max-width: 1799px) {
-
-.show-role {
-    width: 40%;
-    background-color: white;
-    border: 1px rgba(0, 0, 0, 0.4) solid;
-    cursor: pointer;
-    padding: 13px 20px;
-    color: #45c3d2;
-    margin-top: 50px;
-    border-radius: 10px;
-
 }
 
 .place-to-button {
@@ -436,11 +374,17 @@ body {
 
 }
 
+.show-role {
+    width: 40%;
+    background-color: white;
+    border: 1px rgba(0, 0, 0, 0.4) solid;
+    cursor: pointer;
+    padding: 13px 20px;
+    color: #45c3d2;
+    margin-top: 50px;
+    border-radius: 10px;
+
 }
-
-
-
-
 
 .show-role:focus {
     outline: none;
@@ -488,13 +432,8 @@ body {
 }
 
 .ending-footer {
-    width: 192vh;
+   
     overflow-x: hidden;
-    display: flex;
-    flex-direction: row;
-    height: 10vh;
-    align-items: center;
-    justify-content: space-around;
     background-color:#45c3d2;
 }
 
@@ -783,18 +722,27 @@ body {
     color: white;
 }
 
+.end-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 40px;
+}
+
 
 
     </style>
 <body>
     
     <header id="header" class="header">
+    <div class="container">
     <div class="doctor-role">
-        <a href="/mainpage" class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Main Page </span></a>
-        <div class="doctor-title">  </div>
+        <a href="/searchdoctor" class="icon-header" id="back-to-main-page"> <i class="fa-solid fa-circle-arrow-left fa-2x"></i> <span class="script"> To Search Doctor </span></a>
+        <strong class="doctor-title">  </strong>
     </div>
 
         <div class="icon-header" id="nav-bar"> <i class="fa-solid fa-bars fa-2x"></i> </div>
+    </div>
     </header>
 
     <!-- <div class="navigation-bar">
@@ -838,8 +786,9 @@ body {
         </div>
     </div>
 
-    <main id="main">
+    
         <div class="frame-for-booking-info">
+            
         <div class="doctor-booking-info">
             <div class="doctor-bookmark">
                 <strong> <i class="fa-solid fa-house"></i> / Specialist Examination / <span class="specific-specialization"> 
@@ -938,11 +887,13 @@ body {
 
 
         </div>
+        
     </div>
 
   
     <div class="doctor-description-box"> 
     <!-- <div class="doctor-description">  -->
+        <div class="doctor-container">
         <div class="doctor-name-and-title"> 
         <h2 class="doctor-name-title"> Specialized Doctor || Tran Minh Khuyen </h2>
         </div>
@@ -967,11 +918,12 @@ body {
             </ul>
         </div>
 
-    <!-- </div> -->
+     </div>
 
     </div>
 
     <div class="feedback-comment">
+        <div class="doctor-container">
         <div class="feedback-title">
             <h2> Patient feedback after visiting </h2>
         </div>
@@ -1047,10 +999,11 @@ body {
         </div>
     </div>
     </div>
+    </div>
 
 
     <div class="ending-footer">
-
+    <div class="end-container">
     <div class="left-side">
         <p class="copyright"> &#169; 2022 BookingCare. </p>
     </div>
@@ -1060,22 +1013,9 @@ body {
         <img src="https://bookingcare.vn/themes/app1912/assets/img/social/facebook-square.svg" alt="" class="social-media-icon">
     </div>
 
-
+    </div>
     </div>
     
-
-
-
-      
-
-
-
-
-
-
-
-    </main>
-   
 
     <script src="./doctor.js"></script>
     <script src="./doctorBooking.js"></script>

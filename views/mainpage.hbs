@@ -206,16 +206,26 @@ footer .location {
 }
 
 .header {
-    width: 120rem;
+       /*width: 120rem;  */
     /* overflow-x: hidden; */
-    padding: 13px 20px;
+    /*padding: 13px 20px;
     background-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     margin: 0;
-    padding: 0;
+    padding: 0; */
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .left-side {
@@ -461,20 +471,20 @@ footer .location {
 
 
 
-@media (min-width: 300px) and (max-width: 1199px) {
+@media (min-width: 300px) and (max-width: 1699px) {
 
     .showresult.show {
     display: flex;
     position: absolute;
-    top: 52.95rem;
-    left: 26rem;
+    top: 50.2rem;
+    left: 36rem;
     transform: translate(-50%,-50%);
     z-index: 10;
 }
 
 }
 
-@media (min-width: 300px) and (max-width: 1199px) {
+/*@media (min-width: 300px) and (max-width: 1699px) {
 
 .showresult.show {
 display: flex;
@@ -486,7 +496,7 @@ z-index: 10;
 }
 
 
-}
+} */
 
 @media (min-width: 1700px) and (max-width: 1799px) {
 
@@ -521,7 +531,7 @@ z-index: 10;
 <body>
 
     <header id="header" class="header"> 
-        
+        <div class="container">
         <div class="left-side">
             <i class="fa-solid fa-bars fa-2x" id="nav-bar" class="nav-bar"></i> 
             <a href="/mainpage"> <img src="https://bookingcare.vn/assets/icon/bookingcare-2020.svg" alt="" class="logo-image"></a>
@@ -567,6 +577,7 @@ z-index: 10;
     
     
     
+        </div>
         </div>
     
         </header>
